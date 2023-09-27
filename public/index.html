@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!-- Coding by CodingNepal | www.codingnepalweb.com -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Earth Network </title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Boxiocns CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="sidebar close">
+    <div class="logo-details">
+        <i class='bx bx-world'></i>
+      <span class="logo_name"></span>
+    </div>
+    <ul class="nav-links">
+      <li>
+        <a href="#">
+            <i class='bx bxs-coin'></i>
+          <span class="link_name">ANML&nbsp;Token</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bxs-store-alt' ></i>
+          <span class="link_name">Exchange</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bxs-droplet' ></i>
+          <span class="link_name">Provide</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bxs-bank' ></i>
+          <span class="link_name">Stake&nbsp;ERTH</span>
+        </a>
+      </li>
+      <li>
+    <div class="profile-details">
+      <div class="profile-content">
+        <img src="keplr.svg" alt="profileImg">
+      </div>
+      <div class="name-job">
+        <div class="profile_name">Wallet Name</div>
+        <div class="job">keplr</div>
+      </div>
+      <i class='bx bx-log-out' ></i>
+    </div>
+  </li>
+</ul>
+  </div>
+  <section class="home-section">
+    <div class="home-content">
+        <div class="test-box">
+            <i class='bx bx-wink-smile status-icon remove'></i>
+            <i class='bx bxs-id-card status-icon'></i>
+            <button class="claim-button">Register</button>
+        </div>
+    </div>
+  </section>
+  <script>
+  let homeSection = document.querySelector(".home-section");
+  let sidebar = document.querySelector(".close");
+  let sidebarBtn = document.querySelector(".bx-menu");
+  sidebar.addEventListener("mouseover", ()=>{
+    sidebar.classList.remove("close");
+  });
+  homeSection.addEventListener("mouseover", ()=>{
+    sidebar.classList.add("close");
+  });
+  </script>
+</body>
+</html>
