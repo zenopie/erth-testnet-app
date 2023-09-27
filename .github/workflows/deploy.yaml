@@ -23,4 +23,4 @@ jobs:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
     - name: Deploy to Server
-      run: scp -r * ubuntu@51.81.154.8:/erth
+      run: scp -r * ubuntu@51.81.154.8
