@@ -39,7 +39,7 @@ app.post("/api/veriff/", (req, res) => {
   );
   console.log("Payload", JSON.stringify(payload, null, 4));
   res.json({ status: "success" });
-  process.exit();
+  //process.exit();
 });
 
 let server = require("http").Server(app);
