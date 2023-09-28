@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="style.css">
     <!-- Boxiocns CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='https://cdn.veriff.me/sdk/js/1.5/veriff.min.js'></script>
+    <script src='https://cdn.veriff.me/incontext/js/v1/veriff.js'></script>
    </head>
 <body>
   <div class="sidebar close">
@@ -55,6 +57,7 @@
 </ul>
   </div>
   <section class="home-section">
+
     <div class="home-content">
         <div class="test-box">
           <i class='bx bx-wink-smile status-icon remove'></i>
@@ -64,7 +67,7 @@
         <div class="disclaimer remove">
           <i class='bx bx-error-alt'></i>
           <span class="disclaimer-text">DISCLAIMER: In order to secure proof of humanity your currently connected address will be associated with your identity. </span>
-          <button onclick="test()" class="claim-button">Continue</button>
+          <div id='veriff-root' style="margin-top: 30px;"></div>
         </div>
 
     </div>

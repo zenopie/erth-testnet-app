@@ -47,12 +47,11 @@ app.post('/api/submit', (req, res) => {
 
 });
 
-app.get('/api/idenfy', (req, res) => {
+app.post('/api/veriff', (req, res) => {
   console.log("recieved apicall");
-  //console.log(req.body);
+  console.log(req.body);
 });
 
-//const server = https.createServer(options, app);
 
 app.listen(port, '0.0.0.0', () => {
   console.log(`Server is running on port ${port}`);
