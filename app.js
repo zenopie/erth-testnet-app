@@ -48,7 +48,10 @@ app.post('/api/submit', (req, res) => {
 
 });
 
-
+app.post('/api/indenfy', (req, res) => {
+  console.log("recieved apicall");
+  console.log(req.body);
+});
 
 //const server = https.createServer(options, app);
 
