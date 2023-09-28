@@ -1,5 +1,5 @@
 const express = require('express');
-const https = require('https');
+//const https = require('https');
 const fs = require('fs');
 const axios = require('axios');
 const bodyParser = require('body-parser');
@@ -50,9 +50,9 @@ app.post('/api/submit', (req, res) => {
 
 
 
-const server = https.createServer(options, app);
+//const server = https.createServer(options, app);
 
-server.listen(port, '0.0.0.0', () => {
+app.listen(port, '0.0.0.0', () => {
   console.log(`Server is running on port ${port}`);
 });
 
