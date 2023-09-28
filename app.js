@@ -1,60 +1,49 @@
 const express = require('express');
-const fs = require('fs');
-const axios = require('axios');
+const crypto = require("crypto");
 const bodyParser = require('body-parser');
-
 const app = express();
-const port = 3000; // Port for HTTPS
-const idenfyurl = 'https://ivs.idenfy.com/api/v2/token';
 
-const options = {
-  key: fs.readFileSync('../ssl/private-key.key'), // Replace with your private key file
-  cert: fs.readFileSync('../ssl/certificate.crt'), // Replace with your public certificate file
-};
+const WEBHOOK_PORT = 3000; // Port for HTTPS
+const API_SECRET = "21b28fe5-17e1-4152-b983-d9f431da3654";
+
 
 app.use(bodyParser.json());
 // Serve static files from the 'public' directory
 app.use(express.static('public'));
-// Recieve request to get token
-app.post('/api/submit', (req, res) => {
-  console.log(req.body);
-  // Update the variable based on the request body
-  const newValue = req.body.user;
-    // Data to be sent in the request body
-  const postData = {
-    //"dummyStatus":"APPROVED",
-    "clientId":newValue,
-    "documents":["ID_CARD","DRIVER_LICENSE"],
-  };
-  // API key and API secret
-  const apiKey = 'tfbKho85rgC';
-  const apiSecret = '9M4bg79y9PcqXloeo31E';
 
-  // Encode API key and API secret in Base64
-  const base64Credentials = Buffer.from(`${apiKey}:${apiSecret}`).toString('base64');
+function isSignatureValid(data) {
+  const { signature, secret } = data;
+  let { payload } = data;
 
-  axios.post(idenfyurl, postData, {
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Basic ${base64Credentials}`
-    }
-  })
-    .then(response => {console.log('Success:', response.data);
-    res.status(200).json({ token: response.data.authToken});
-  })
-    .catch(error => {console.error('Error:', error);
-  });
+  if (data.payload.constructor === Object) {
+    payload = JSON.stringify(data.payload);
+  }
+  if (payload.constructor !== Buffer) {
+    payload = new Buffer.from(payload, "utf8");
+  }
+  const hash = crypto.createHmac("sha256", secret);
+  hash.update(payload);
+  const digest = hash.digest("hex");
+  return digest === signature.toLowerCase();
+}
 
+app.post("/api/veriff/", (req, res) => {
+  const signature = req.get("x-hmac-signature");
+  const secret = API_SECRET;
+  const payload = req.body;
+
+  console.log("Received a webhook");
+  console.log(
+    "Validated signature:",
+    isSignatureValid({ signature, secret, payload })
+  );
+  console.log("Payload", JSON.stringify(payload, null, 4));
+  res.json({ status: "success" });
+  process.exit();
 });
 
-app.post('/api/veriff', (req, res) => {
-  console.log("recieved apicall");
-  console.log(req.body);
-});
-
-
-app.listen(port, '0.0.0.0', () => {
-  console.log(`Server is running on port ${port}`);
+app.listen(WEBHOOK_PORT, '0.0.0.0', () => {
+  console.log(`Server is running on port ${WEBHOOK_PORT}`);
 });
 
 
