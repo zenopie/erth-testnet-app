@@ -5,7 +5,7 @@ const axios = require('axios');
 const bodyParser = require('body-parser');
 
 const app = express();
-const port = 443; // Port for HTTPS
+const port = 3000; // Port for HTTPS
 const idenfyurl = 'https://ivs.idenfy.com/api/v2/token';
 
 const options = {
