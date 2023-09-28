@@ -42,7 +42,8 @@ app.post("/api/veriff/", (req, res) => {
   process.exit();
 });
 
-app.listen(WEBHOOK_PORT, '0.0.0.0', () => {
+let server = require("http").Server(app);
+server.listen(WEBHOOK_PORT, '0.0.0.0', () => {
   console.log(`Server is running on port ${WEBHOOK_PORT}`);
 });
 
