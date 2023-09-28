@@ -27,12 +27,29 @@ function isSignatureValid(data) {
   return digest === signature.toLowerCase();
 }
 
-app.post("/api/veriff/", (req, res) => {
+app.post("/api/veriff/decisions", (req, res) => {
   const signature = req.get("x-hmac-signature");
   const secret = API_SECRET;
   const payload = req.body;
 
-  console.log("Received a webhook");
+  console.log("Received a decisions webhook");
+  console.log(
+    "Validated signature:",
+    isSignatureValid({ signature, secret, payload })
+  );
+  console.log("Payload", JSON.stringify(payload, null, 4));
+  res.json({ status: "success" });
+  if (payload.verification.status == "approved" && isSignatureValid({ signature, secret, payload })) {
+    console.log("test");
+  }
+});
+
+app.post("/api/veriff/events", (req, res) => {
+  const signature = req.get("x-hmac-signature");
+  const secret = API_SECRET;
+  const payload = req.body;
+
+  console.log("Received an events webhook");
   console.log(
     "Validated signature:",
     isSignatureValid({ signature, secret, payload })
