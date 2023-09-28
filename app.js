@@ -5,13 +5,14 @@ const axios = require('axios');
 const bodyParser = require('body-parser');
 
 const app = express();
-const port = 443; // Port for HTTPS
+const port = 3000; // Port for HTTPS
+
 const idenfyurl = 'https://ivs.idenfy.com/api/v2/token';
 
-const options = {
-  key: fs.readFileSync('ssl/server.key'), // Replace with your private key file
-  cert: fs.readFileSync('ssl/certificate.crt'), // Replace with your public certificate file
-};
+//const options = {
+// key: fs.readFileSync('ssl/server.key'), // Replace with your private key file
+//  cert: fs.readFileSync('ssl/certificate.crt'), // Replace with your public certificate file
+//};
 
 app.use(bodyParser.json());
 // Serve static files from the 'public' directory
@@ -50,9 +51,9 @@ app.post('/api/submit', (req, res) => {
 
 
 
-const server = https.createServer(options, app);
+const server = https.createServer(app);
 
-server.listen(port, '51.81.154.8', () => {
+server.listen(port, '0.0.0.0', () => {
   console.log(`Server is running on port ${port}`);
 });
 
