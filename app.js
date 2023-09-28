@@ -48,7 +48,7 @@ app.post('/api/submit', (req, res) => {
 
 });
 
-app.post('/api/indenfy', (req, res) => {
+app.post('/api/idenfy', (req, res) => {
   console.log("recieved apicall");
   console.log(req.body);
 });
