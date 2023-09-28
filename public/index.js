@@ -8,6 +8,29 @@ const veriff = Veriff({
   }
 });
 
+const pending_check_url = 'https://erth.network/api/pending';
+
+fetch(pending_check_url, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json', // Set the content type to JSON
+  },
+  body: JSON.stringify({
+    address: '888',
+  }) // Convert the data object to JSON string
+})
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json(); // Assuming the response is JSON
+  })
+  .then(data => {
+    console.log('POST request successful:', data);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
 
 function registerButton() {
   veriff.setParams({

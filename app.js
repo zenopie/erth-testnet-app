@@ -27,7 +27,11 @@ function isSignatureValid(data) {
   const digest = hash.digest("hex");
   return digest === signature.toLowerCase();
 }
-
+app.post("api/pending", (req, res) => {
+  const payload = req.body;
+  console.log(payload);
+  res.json({ status: "success" });
+});
 app.post("/api/veriff/decisions", (req, res) => {
   const signature = req.get("x-hmac-signature");
   const secret = API_SECRET;
