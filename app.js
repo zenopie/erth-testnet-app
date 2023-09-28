@@ -1,5 +1,4 @@
 const express = require('express');
-//const https = require('https');
 const fs = require('fs');
 const axios = require('axios');
 const bodyParser = require('body-parser');
@@ -48,9 +47,9 @@ app.post('/api/submit', (req, res) => {
 
 });
 
-app.post('/api/idenfy', (req, res) => {
+app.get('/api/idenfy', (req, res) => {
   console.log("recieved apicall");
-  console.log(req.body);
+  //console.log(req.body);
 });
 
 //const server = https.createServer(options, app);
