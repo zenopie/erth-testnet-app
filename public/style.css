@@ -282,3 +282,34 @@
   .remove{
     display: none !important;
   }
+  #iframe{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 600px;
+    border: none;
+    border-radius: 50px;
+  }
+  .disclaimer{
+    text-align: center;
+    width: 350px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .disclaimer-text{
+    font-size: 20px;
+    color: #F24C4C;
+  }
+  .bx-error-alt{
+    font-size: 50px;
+    padding: 20px;
+    color: #F24C4C;
+  }

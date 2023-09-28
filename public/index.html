@@ -57,10 +57,16 @@
   <section class="home-section">
     <div class="home-content">
         <div class="test-box">
-            <i class='bx bx-wink-smile status-icon remove'></i>
-            <i class='bx bxs-id-card status-icon'></i>
-            <button class="claim-button">Register</button>
+          <i class='bx bx-wink-smile status-icon remove'></i>
+          <i class='bx bxs-id-card status-icon'></i>
+          <button onclick="registerButton()" class="claim-button">Register</button>
         </div>
+        <div class="disclaimer remove">
+          <i class='bx bx-error-alt'></i>
+          <span class="disclaimer-text">DISCLAIMER: In order to secure proof of humanity your currently connected address will be associated with your identity. </span>
+          <button onclick="test()" class="claim-button">Continue</button>
+        </div>
+
     </div>
   </section>
   <script>
@@ -74,5 +80,6 @@
     sidebar.classList.add("close");
   });
   </script>
+  <script src="index.js"></script>
 </body>
 </html>
