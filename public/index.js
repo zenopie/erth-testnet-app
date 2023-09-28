@@ -1,3 +1,4 @@
+let verification_status = "not verified";
 
 const veriff = Veriff({
   host: 'https://stationapi.veriff.com',
@@ -8,17 +9,15 @@ const veriff = Veriff({
   }
 });
 
-const pending_check_url = 'https://erth.network/api/pending';
+const pending_check_url = '/api/pending/888';
 
-fetch(pending_check_url, {
-  method: 'POST',
+async function check_verification_status(){
+  await fetch(pending_check_url, {
+  method: 'GET',
   headers: {
     'Content-Type': 'application/json', // Set the content type to JSON
-  },
-  body: JSON.stringify({
-    address: '888',
-  }) // Convert the data object to JSON string
-})
+  }
+  })
   .then(response => {
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
@@ -26,11 +25,16 @@ fetch(pending_check_url, {
     return response.json(); // Assuming the response is JSON
   })
   .then(data => {
-    console.log('POST request successful:', data);
+    console.log('GET request successful:', data);
+    if (data.pending) {
+      verification_status = "pending";
+    }
   })
   .catch(error => {
     console.error('Error:', error);
   });
+  console.log("Verification Status: " + verification_status);
+}
 
 function registerButton() {
   veriff.setParams({
@@ -45,4 +49,6 @@ function registerButton() {
   document.querySelector(".disclaimer").classList.remove("remove");
 }
 
+
+check_verification_status();
 

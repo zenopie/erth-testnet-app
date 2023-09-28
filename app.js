@@ -27,12 +27,13 @@ function isSignatureValid(data) {
   const digest = hash.digest("hex");
   return digest === signature.toLowerCase();
 }
-app.post("api/pending", (req, res) => {
-  const payload = req.body;
-  console.log(payload);
-  res.json({ status: "success" });
+app.get("/api/pending/:address", (req, res) => {
+  const address = req.params.address;
+  console.log(address);
+  const pending = pending_verifications.includes(address);
+  res.json({ pending: pending });
 });
-app.post("/api/veriff/decisions", (req, res) => {
+app.post("/api/veriff/decisions/", (req, res) => {
   const signature = req.get("x-hmac-signature");
   const secret = API_SECRET;
   const payload = req.body;
@@ -54,7 +55,7 @@ app.post("/api/veriff/decisions", (req, res) => {
   }
 });
 
-app.post("/api/veriff/events", (req, res) => {
+app.post("/api/veriff/events/", (req, res) => {
   const signature = req.get("x-hmac-signature");
   const secret = API_SECRET;
   const payload = req.body;
