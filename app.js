@@ -120,7 +120,7 @@ app.post("/api/veriff/decisions/", (req, res) => {
       documentExpiration: payload.verification.document.validUntil
     };
     const message_object = {
-      register: userObject
+      register: {user_object: userObject}
     };
     contract_interaction(message_object);
   }
