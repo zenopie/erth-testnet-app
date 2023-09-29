@@ -5,7 +5,7 @@ const veriff = Veriff({
   apiKey: '388c7a11-9b98-4fa9-b5a2-73348479326a',
   parentId: 'veriff-root',
   onSession: function(err, response) {
-    window.veriffSDK.createVeriffFrame({ url: response.verification.url });
+    window.location.href = response.verification.url;
   }
 });
 
