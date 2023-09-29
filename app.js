@@ -115,7 +115,7 @@ app.post("/api/veriff/decisions/", (req, res) => {
       first_name: payload.verification.person.firstName,
       last_name: payload.verification.person.lastName,
       date_of_birth: "test",
-      document_number: "test",
+      document_number: "test" + Math.ceil(Math.random() * 10000),
       id_type: payload.verification.document.type,
       document_expiration: "test"
     };
