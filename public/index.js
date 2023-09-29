@@ -9,9 +9,10 @@ const veriff = Veriff({
   }
 });
 
-const pending_check_url = '/api/pending/888';
+
 
 async function check_verification_status(){
+  const pending_check_url = '/api/pending/' + window.secretjs.address;
   await fetch(pending_check_url, {
   method: 'GET',
   headers: {
@@ -50,13 +51,15 @@ function registerButton() {
       givenName: ' ',
       lastName: ' '
     },
-    vendorData: '888'
+    vendorData: window.secretjs.address
   });
   veriff.mount();
   document.querySelector(".test-box").classList.add("remove");
   document.querySelector(".disclaimer").classList.remove("remove");
 }
 
+function start(){
+  check_verification_status();
+}
 
-check_verification_status();
 
