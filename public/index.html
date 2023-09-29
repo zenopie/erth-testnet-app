@@ -8,10 +8,9 @@
     <!-- Boxiocns CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src='https://cdn.veriff.me/sdk/js/1.5/veriff.min.js'></script>
-    <script src='https://cdn.veriff.me/incontext/js/v1/veriff.js'></script>
    </head>
 <body>
+  
   <div class="sidebar close">
     <div class="logo-details">
         <i class='bx bx-world'></i>
@@ -59,16 +58,21 @@
   <section class="home-section">
 
     <div class="home-content">
-        <div class="test-box">
-          <i class='bx bx-wink-smile status-icon remove'></i>
-          <i class='bx bxs-id-card status-icon'></i>
-          <button onclick="registerButton()" class="claim-button">Register</button>
-        </div>
-        <div class="disclaimer remove">
-          <i class='bx bx-error-alt'></i>
-          <span class="disclaimer-text">DISCLAIMER: In order to secure proof of humanity your currently connected address will be associated with your identity. </span>
-          <div id='veriff-root' style="margin-top: 30px;"></div>
-        </div>
+      <div id="loading"></div>
+      <div class="test-box remove">
+        <i class='bx bx-wink-smile status-icon remove'></i>
+        <i class='bx bxs-id-card status-icon'></i>
+        <button onclick="registerButton()" class="claim-button">Register</button>
+      </div>
+      <div class="disclaimer remove">
+        <i class='bx bx-error-alt'></i>
+        <span class="disclaimer-text">DISCLAIMER: In order to secure proof of humanity your currently connected address will be associated with your identity. </span>
+        <div id='veriff-root' style="margin-top: 30px;"></div>
+      </div>
+      <div id="pending-box" class="disclaimer remove">
+        <i class='bx bx-hourglass status-icon'></i>
+        <span class="disclaimer-text">Your verification is now pending. Please allow up to 24 hours to complete.</span>
+      </div>
 
     </div>
   </section>
@@ -83,6 +87,8 @@
     sidebar.classList.add("close");
   });
   </script>
+  <script src='https://cdn.veriff.me/sdk/js/1.5/veriff.min.js'></script>
+  <script src='https://cdn.veriff.me/incontext/js/v1/veriff.js'></script>
   <script src="index.js"></script>
 </body>
 </html>

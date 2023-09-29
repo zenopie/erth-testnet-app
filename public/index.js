@@ -34,6 +34,14 @@ async function check_verification_status(){
     console.error('Error:', error);
   });
   console.log("Verification Status: " + verification_status);
+  if (verification_status == "not verified") {
+    document.querySelector("#loading").classList.add("remove");
+    document.querySelector(".test-box").classList.remove("remove");
+  } else if (verification_status == "pending") {
+    document.querySelector("#loading").classList.add("remove");
+    document.querySelector("#pending-box").classList.remove("remove");
+  }
+  
 }
 
 function registerButton() {
