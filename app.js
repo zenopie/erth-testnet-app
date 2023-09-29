@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const app = express();
 const fs = require('fs');
 const path = require('path');
+const { Wallet, SecretNetworkClient, MsgExecuteContract } = require("secretjs");
+
 
 function get_value(file) {
   const filePath = path.join(__dirname, file);
@@ -16,6 +18,40 @@ function get_value(file) {
     return null; // Or handle the error in another way based on your needs
   }
 }
+
+const API_SECRET = get_value("API_SECRET.txt");
+const WALLET_KEY = get_value("WALLET_KEY.txt");
+const WEBHOOK_PORT = 3000; // Port for HTTPS
+const ID_CONTRACT = "secret18fwtv46xqzx5wuhpnhsez4tqhuyqhzqeqy39hf";
+const ID_HASH = "d60cbfe3649bd33153d1019acb3b364f316a9adeef4cec4bb2993df09e0b8cd3";
+
+const wallet = new Wallet(WALLET_KEY);
+
+
+const secretjs = new SecretNetworkClient({
+  url: "https://api.pulsar.scrttestnet.com",
+  chainId: "pulsar-3",
+  wallet: wallet,
+  walletAddress: wallet.address,
+});
+
+async function contract_interaction(message_object){
+	let msg = new MsgExecuteContract({
+		sender: secretjs.address,
+		contract_address: ID_CONTRACT,
+    	code_hash: ID_HASH,
+		msg: message_object,
+	});
+	let resp = await secretjs.tx.broadcast([msg], {
+		gasLimit: 1_000_000,
+		gasPriceInFeeDenom: 0.1,
+		feeDenom: "uscrt",
+	});
+	console.log(resp);
+};
+
+let pending_verifications = JSON.parse(get_value("PENDING_VERIFS.txt"));
+
 function save_pending(array, file){
   const filePath = path.join(__dirname, file);
   const arrayAsString = JSON.stringify(array, null, 2);
@@ -27,14 +63,6 @@ function save_pending(array, file){
       console.log('Array written to file successfully.');
     });
 }
-
-const API_SECRET = get_value("API_SECRET.txt");
-
-
-const WEBHOOK_PORT = 3000; // Port for HTTPS
-
-
-let pending_verifications = JSON.parse(get_value("PENDING_VERIFS.txt"));
 
 app.use(bodyParser.json());
 // Serve static files from the 'public' directory
@@ -81,6 +109,20 @@ app.post("/api/veriff/decisions/", (req, res) => {
   }
   if (payload.verification.status == "approved" && isValid) {
     console.log("test");
+    const userObject = {
+      country: payload.verification.document.country,
+      address: payload.verification.vendorData,
+      firstName: payload.verification.person.firstName,
+      lastName: payload.verification.person.lastName,
+      dateOfBirth: payload.verification.person.dateOfBirth,
+      documentNumber: payload.verification.document.number,
+      idType: payload.verification.document.type,
+      documentExpiration: payload.verification.document.validUntil
+    };
+    const message_object = {
+      user_object: userObject
+    };
+    contract_interaction(message_object);
   }
 });
 

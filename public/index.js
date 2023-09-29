@@ -1,4 +1,4 @@
-let verification_status = "not verified";
+
 
 const veriff = Veriff({
   host: 'https://stationapi.veriff.com',
@@ -9,35 +9,58 @@ const veriff = Veriff({
   }
 });
 
+async function query(){
+	let tx = await secretjs.query.compute.queryContract({
+	  contract_address: ID_CONTRACT,
+	  code_hash: ID_HASH,
+	  query: {
+		  registration_status: {
+			address: secretjs.address
+		},
+	  }
+	});
+	console.log(tx);
+  return tx.registration_status;
+};
+
 
 
 async function check_verification_status(){
-  const pending_check_url = '/api/pending/' + window.secretjs.address;
-  await fetch(pending_check_url, {
-  method: 'GET',
-  headers: {
-    'Content-Type': 'application/json', // Set the content type to JSON
+  let verification_status = "not verified";
+  let contract_value = query();
+  if (contract_value == "registered") {
+    verification_status = "registered";
+  } else {
+    const pending_check_url = '/api/pending/' + window.secretjs.address;
+    await fetch(pending_check_url, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json', // Set the content type to JSON
+    }
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json(); // Assuming the response is JSON
+    })
+    .then(data => {
+      console.log('GET request successful:', data);
+      if (data.pending) {
+        verification_status = "pending";
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+    console.log("Verification Status: " + verification_status);
   }
-  })
-  .then(response => {
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-    return response.json(); // Assuming the response is JSON
-  })
-  .then(data => {
-    console.log('GET request successful:', data);
-    if (data.pending) {
-      verification_status = "pending";
-    }
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
-  console.log("Verification Status: " + verification_status);
-  if (verification_status == "not verified") {
+  if (verification_status == "registered") {
     document.querySelector("#loading").classList.add("remove");
-    document.querySelector(".test-box").classList.remove("remove");
+    document.querySelector("").classList.remove("remove");
+  } else if (verification_status == "not verified") {
+    document.querySelector("#loading").classList.add("remove");
+    document.querySelector("#register-box").classList.remove("remove");
   } else if (verification_status == "pending") {
     document.querySelector("#loading").classList.add("remove");
     document.querySelector("#pending-box").classList.remove("remove");
@@ -61,5 +84,5 @@ function registerButton() {
 function start(){
   check_verification_status();
 }
-
+//console.log(new Date().toISOString().split('T')[0]);
 

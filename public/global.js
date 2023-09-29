@@ -1,9 +1,8 @@
 const { SecretNetworkClient, MsgExecuteContract } = window.secretjs;
 
 
-const ANML_CONTRACT = "";
-const ANML_HASH = "";
-
+const ID_CONTRACT = "secret18fwtv46xqzx5wuhpnhsez4tqhuyqhzqeqy39hf";
+const ID_HASH = "d60cbfe3649bd33153d1019acb3b364f316a9adeef4cec4bb2993df09e0b8cd3";
 
 window.onload = async () => {
     connectKeplr();
