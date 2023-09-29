@@ -2,11 +2,39 @@ const express = require('express');
 const crypto = require("crypto");
 const bodyParser = require('body-parser');
 const app = express();
+const fs = require('fs');
+const path = require('path');
+
+function get_value(file) {
+  const filePath = path.join(__dirname, file);
+  try {
+    const data = fs.readFileSync(filePath, 'utf8');
+    console.log(data);
+    return data;
+  } catch (err) {
+    console.error(err);
+    return null; // Or handle the error in another way based on your needs
+  }
+}
+function save_pending(array, file){
+  const filePath = path.join(__dirname, file);
+  const arrayAsString = JSON.stringify(array, null, 2);
+    fs.writeFile(filePath, arrayAsString, 'utf8', (err) => {
+      if (err) {
+          console.error(`Error writing file: ${err}`);
+          return;
+      }
+      console.log('Array written to file successfully.');
+    });
+}
+
+const API_SECRET = get_value("API_SECRET.txt");
+
 
 const WEBHOOK_PORT = 3000; // Port for HTTPS
-const API_SECRET = "21b28fe5-17e1-4152-b983-d9f431da3654";
 
-let pending_verifications = [];
+
+let pending_verifications = JSON.parse(get_value("PENDING_VERIFS.txt"));
 
 app.use(bodyParser.json());
 // Serve static files from the 'public' directory
@@ -46,6 +74,7 @@ app.post("/api/veriff/decisions/", (req, res) => {
   let find_address = pending_verifications.indexOf(payload.verification.vendorData);
   if (find_address != -1 && isValid){
     pending_verifications.splice(find_address, 1);
+    save_pending(pending_verifications, "PENDING_VERIFS.txt");
     console.log("spliced address ", pending_verifications);
   } else {
     console.log("error finding address in pending verifications");
@@ -67,6 +96,7 @@ app.post("/api/veriff/events/", (req, res) => {
   res.json({ status: "success" });
   if (payload.action == "submitted" && isValid) {
     pending_verifications.push(payload.vendorData);
+    save_pending(pending_verifications, "PENDING_VERIFS.txt");
     console.log("pushed address ", pending_verifications);
   }
 });
