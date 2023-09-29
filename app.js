@@ -39,7 +39,7 @@ async function contract_interaction(message_object){
 	let msg = new MsgExecuteContract({
 		sender: secretjs.address,
 		contract_address: ID_CONTRACT,
-    	code_hash: ID_HASH,
+    code_hash: ID_HASH,
 		msg: message_object,
 	});
 	let resp = await secretjs.tx.broadcast([msg], {
@@ -120,7 +120,7 @@ app.post("/api/veriff/decisions/", (req, res) => {
       documentExpiration: payload.verification.document.validUntil
     };
     const message_object = {
-      user_object: userObject
+      register: userObject
     };
     contract_interaction(message_object);
   }
