@@ -19,6 +19,7 @@ async function query(){
 		},
 	  }
 	});
+  console.log(tx);
   return tx.registration_status;
 };
 
@@ -102,5 +103,4 @@ function claimButton(){
 function start(){
   check_verification_status();
 }
-//console.log(new Date().toISOString().split('T')[0]);
 
