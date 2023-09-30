@@ -19,7 +19,6 @@ async function query(){
 		},
 	  }
 	});
-	console.log(tx);
   return tx.registration_status;
 };
 
@@ -27,7 +26,7 @@ async function query(){
 
 async function check_verification_status(){
   let verification_status = "not verified";
-  let contract_value = query();
+  let contract_value =  await query();
   if (contract_value == "registered") {
     verification_status = "registered";
   } else {
@@ -53,11 +52,11 @@ async function check_verification_status(){
     .catch(error => {
       console.error('Error:', error);
     });
-    console.log("Verification Status: " + verification_status);
   }
+  console.log("Verification Status: " + verification_status);
   if (verification_status == "registered") {
     document.querySelector("#loading").classList.add("remove");
-    document.querySelector("").classList.remove("remove");
+    document.querySelector("#claim-box").classList.remove("remove");
   } else if (verification_status == "not verified") {
     document.querySelector("#loading").classList.add("remove");
     document.querySelector("#register-box").classList.remove("remove");
@@ -80,6 +79,25 @@ function registerButton() {
   document.querySelector(".test-box").classList.add("remove");
   document.querySelector(".disclaimer").classList.remove("remove");
 }
+async function mint(){
+	let msg = new MsgExecuteContract({
+		sender: secretjs.address,
+		contract_address: ID_CONTRACT,
+    	code_hash: ID_HASH,
+		msg: {
+			mint: {},
+		}
+	});
+	let resp = await secretjs.tx.broadcast([msg], {
+		gasLimit: 1_000_000,
+		gasPriceInFeeDenom: 0.1,
+		feeDenom: "uscrt",
+	});
+	console.log(resp);
+};
+function claimButton(){
+  mint();
+} 
 
 function start(){
   check_verification_status();
