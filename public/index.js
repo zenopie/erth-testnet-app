@@ -20,16 +20,23 @@ async function query(){
 	  }
 	});
   console.log(tx);
-  return tx.registration_status;
+  return tx;
 };
 
 
 
 async function check_verification_status(){
-  let verification_status = "not verified";
+  let anml_status = "not_verified";
   let contract_value =  await query();
-  if (contract_value == "registered") {
-    verification_status = "registered";
+  if (contract_value.registration_status == "registered") {
+    const now = Date.now();
+    const oneDayInMillis = 24 * 60 * 60 * 1000; // 86,400,000 milliseconds in a day
+    let next_claim = contract_value.last_claim / 1000000 + oneDayInMillis; // divide to turn nanos into miliseconds then add one day
+    if (now > next_claim) {
+      anml_status = "claimable";
+    } else {
+      anml_status = "claimed";
+    }
   } else {
     const pending_check_url = '/api/pending/' + window.secretjs.address;
     await fetch(pending_check_url, {
@@ -47,21 +54,24 @@ async function check_verification_status(){
     .then(data => {
       console.log('GET request successful:', data);
       if (data.pending) {
-        verification_status = "pending";
+        anml_status = "pending";
       }
     })
     .catch(error => {
       console.error('Error:', error);
     });
   }
-  console.log("Verification Status: " + verification_status);
-  if (verification_status == "registered") {
+  console.log("Anml Status: " + anml_status);
+  if (anml_status == "claimable") {
     document.querySelector("#loading").classList.add("remove");
     document.querySelector("#claim-box").classList.remove("remove");
-  } else if (verification_status == "not verified") {
+  } else if (anml_status == "claimed") {
+    document.querySelector("#loading").classList.add("remove");
+    document.querySelector("#complete-box").classList.remove("remove");
+  } else if (anml_status == "not_verified") {
     document.querySelector("#loading").classList.add("remove");
     document.querySelector("#register-box").classList.remove("remove");
-  } else if (verification_status == "pending") {
+  } else if (anml_status == "pending") {
     document.querySelector("#loading").classList.add("remove");
     document.querySelector("#pending-box").classList.remove("remove");
   }
