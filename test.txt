@@ -1,9 +1,9 @@
 {
-    "height": 1223343,
+    "height": 1223628,
     "timestamp": "",
-    "transactionHash": "9C2B89AC0F887A8BF234A4CA048D6D327FDF1D7D50708DFA052F94329706BCD2",
-    "code": 3,
-    "codespace": "compute",
+    "transactionHash": "DAD76B151F6CEE4B0D83263A7058623C3F0C0FC4C8D84A1820F702CFE7C6B7E4",
+    "code": 0,
+    "codespace": "",
     "info": "",
     "tx": {
         "@type": "/cosmos.tx.v1beta1.Tx",
@@ -12,7 +12,7 @@
                 {
                     "@type": "/secret.compute.v1beta1.MsgExecuteContract",
                     "sender": "secret1gvyz48fv7ssc3dx3la735knasjwvfayyteyza8",
-                    "contract": "secret19fmrpc6fc9x88wdha6qgns6fsldcwjfn0dfrgv",
+                    "contract": "secret1vlpglxlxj6f6r56rtnhwvmwnqpcvg5jv6yuhx8",
                     "msg": {
                         "mint": {}
                     },
@@ -38,7 +38,7 @@
                             "mode": "SIGN_MODE_LEGACY_AMINO_JSON"
                         }
                     },
-                    "sequence": "4484"
+                    "sequence": "4490"
                 }
             ],
             "fee": {
@@ -54,10 +54,114 @@
             }
         },
         "signatures": [
-            "lCRdjVMdFXIytKKaflSArxa7Oy6y1NWUrV4UqMh1bt9DNI3Uqx1CkdOFSg3LDEsIUf+BPCxakY/QRUS1GKzNZA=="
+            "2InFpOzjYFt65N9v77m13cUfEXkz4PG68UB47nWbX09UpwwTH1tDyMereyRdmuUDlIzGO9ztp2VhdBfOWjhKIg=="
         ]
     },
-    "rawLog": "failed to execute message; message index: 0: dispatch: submessages: Error parsing into type snip20_reference_impl::msg::ExecuteMsg: unknown variant `recipient`, expected one of `redeem`, `deposit`, `transfer`, `send`, `batch_transfer`, `batch_send`, `burn`, `register_receive`, `create_viewing_key`, `set_viewing_key`, `increase_allowance`, `decrease_allowance`, `transfer_from`, `send_from`, `batch_transfer_from`, `batch_send_from`, `burn_from`, `batch_burn_from`, `mint`, `batch_mint`, `add_minters`, `remove_minters`, `set_minters`, `change_admin`, `set_contract_status`, `add_supported_denoms`, `remove_supported_denoms`, `revoke_permit`: execute contract failed",
+    "rawLog": "[{\"events\":[{\"type\":\"execute\",\"attributes\":[{\"key\":\"contract_address\",\"value\":\"secret1vlpglxlxj6f6r56rtnhwvmwnqpcvg5jv6yuhx8\"},{\"key\":\"contract_address\",\"value\":\"secret1hsn3045l5eztd8xdeqly67wfver5gh7c7267pk\"}]},{\"type\":\"message\",\"attributes\":[{\"key\":\"action\",\"value\":\"/secret.compute.v1beta1.MsgExecuteContract\"},{\"key\":\"module\",\"value\":\"compute\"},{\"key\":\"sender\",\"value\":\"secret1gvyz48fv7ssc3dx3la735knasjwvfayyteyza8\"},{\"key\":\"contract_address\",\"value\":\"secret1vlpglxlxj6f6r56rtnhwvmwnqpcvg5jv6yuhx8\"}]},{\"type\":\"wasm\",\"attributes\":[{\"key\":\"contract_address\",\"value\":\"secret1vlpglxlxj6f6r56rtnhwvmwnqpcvg5jv6yuhx8\"},{\"key\":\"contract_address\",\"value\":\"secret1hsn3045l5eztd8xdeqly67wfver5gh7c7267pk\"}]}]}]",
+    "jsonLog": [
+        {
+            "events": [
+                {
+                    "type": "execute",
+                    "attributes": [
+                        {
+                            "key": "contract_address",
+                            "value": "secret1vlpglxlxj6f6r56rtnhwvmwnqpcvg5jv6yuhx8"
+                        },
+                        {
+                            "key": "contract_address",
+                            "value": "secret1hsn3045l5eztd8xdeqly67wfver5gh7c7267pk"
+                        }
+                    ]
+                },
+                {
+                    "type": "message",
+                    "attributes": [
+                        {
+                            "key": "action",
+                            "value": "/secret.compute.v1beta1.MsgExecuteContract"
+                        },
+                        {
+                            "key": "module",
+                            "value": "compute"
+                        },
+                        {
+                            "key": "sender",
+                            "value": "secret1gvyz48fv7ssc3dx3la735knasjwvfayyteyza8"
+                        },
+                        {
+                            "key": "contract_address",
+                            "value": "secret1vlpglxlxj6f6r56rtnhwvmwnqpcvg5jv6yuhx8"
+                        }
+                    ]
+                },
+                {
+                    "type": "wasm",
+                    "attributes": [
+                        {
+                            "key": "contract_address",
+                            "value": "secret1vlpglxlxj6f6r56rtnhwvmwnqpcvg5jv6yuhx8"
+                        },
+                        {
+                            "key": "contract_address",
+                            "value": "secret1hsn3045l5eztd8xdeqly67wfver5gh7c7267pk"
+                        }
+                    ]
+                }
+            ],
+            "msg_index": 0
+        }
+    ],
+    "arrayLog": [
+        {
+            "msg": 0,
+            "type": "execute",
+            "key": "contract_address",
+            "value": "secret1vlpglxlxj6f6r56rtnhwvmwnqpcvg5jv6yuhx8"
+        },
+        {
+            "msg": 0,
+            "type": "execute",
+            "key": "contract_address",
+            "value": "secret1hsn3045l5eztd8xdeqly67wfver5gh7c7267pk"
+        },
+        {
+            "msg": 0,
+            "type": "message",
+            "key": "action",
+            "value": "/secret.compute.v1beta1.MsgExecuteContract"
+        },
+        {
+            "msg": 0,
+            "type": "message",
+            "key": "module",
+            "value": "compute"
+        },
+        {
+            "msg": 0,
+            "type": "message",
+            "key": "sender",
+            "value": "secret1gvyz48fv7ssc3dx3la735knasjwvfayyteyza8"
+        },
+        {
+            "msg": 0,
+            "type": "message",
+            "key": "contract_address",
+            "value": "secret1vlpglxlxj6f6r56rtnhwvmwnqpcvg5jv6yuhx8"
+        },
+        {
+            "msg": 0,
+            "type": "wasm",
+            "key": "contract_address",
+            "value": "secret1vlpglxlxj6f6r56rtnhwvmwnqpcvg5jv6yuhx8"
+        },
+        {
+            "msg": 0,
+            "type": "wasm",
+            "key": "contract_address",
+            "value": "secret1hsn3045l5eztd8xdeqly67wfver5gh7c7267pk"
+        }
+    ],
     "events": [
         {
             "type": "coin_spent",
@@ -139,7 +243,7 @@
             "attributes": [
                 {
                     "key": "YWNjX3NlcQ==",
-                    "value": "c2VjcmV0MWd2eXo0OGZ2N3NzYzNkeDNsYTczNWtuYXNqd3ZmYXl5dGV5emE4LzQ0ODQ=",
+                    "value": "c2VjcmV0MWd2eXo0OGZ2N3NzYzNkeDNsYTczNWtuYXNqd3ZmYXl5dGV5emE4LzQ0OTA=",
                     "index": true
                 }
             ]
@@ -149,14 +253,86 @@
             "attributes": [
                 {
                     "key": "c2lnbmF0dXJl",
-                    "value": "bENSZGpWTWRGWEl5dEtLYWZsU0FyeGE3T3k2eTFOV1VyVjRVcU1oMWJ0OUROSTNVcXgxQ2tkT0ZTZzNMREVzSVVmK0JQQ3hha1kvUVJVUzFHS3pOWkE9PQ==",
+                    "value": "MkluRnBPempZRnQ2NU45djc3bTEzY1VmRVhrejRQRzY4VUI0N25XYlgwOVVwd3dUSDF0RHlNZXJleVJkbXVVRGxJekdPOXp0cDJWaGRCZk9XamhLSWc9PQ==",
+                    "index": true
+                }
+            ]
+        },
+        {
+            "type": "message",
+            "attributes": [
+                {
+                    "key": "YWN0aW9u",
+                    "value": "L3NlY3JldC5jb21wdXRlLnYxYmV0YTEuTXNnRXhlY3V0ZUNvbnRyYWN0",
+                    "index": true
+                }
+            ]
+        },
+        {
+            "type": "message",
+            "attributes": [
+                {
+                    "key": "bW9kdWxl",
+                    "value": "Y29tcHV0ZQ==",
+                    "index": true
+                },
+                {
+                    "key": "c2VuZGVy",
+                    "value": "c2VjcmV0MWd2eXo0OGZ2N3NzYzNkeDNsYTczNWtuYXNqd3ZmYXl5dGV5emE4",
+                    "index": true
+                },
+                {
+                    "key": "Y29udHJhY3RfYWRkcmVzcw==",
+                    "value": "c2VjcmV0MXZscGdseGx4ajZmNnI1NnJ0bmh3dm13bnFwY3ZnNWp2Nnl1aHg4",
+                    "index": true
+                }
+            ]
+        },
+        {
+            "type": "execute",
+            "attributes": [
+                {
+                    "key": "Y29udHJhY3RfYWRkcmVzcw==",
+                    "value": "c2VjcmV0MXZscGdseGx4ajZmNnI1NnJ0bmh3dm13bnFwY3ZnNWp2Nnl1aHg4",
+                    "index": true
+                }
+            ]
+        },
+        {
+            "type": "wasm",
+            "attributes": [
+                {
+                    "key": "Y29udHJhY3RfYWRkcmVzcw==",
+                    "value": "c2VjcmV0MXZscGdseGx4ajZmNnI1NnJ0bmh3dm13bnFwY3ZnNWp2Nnl1aHg4",
+                    "index": true
+                }
+            ]
+        },
+        {
+            "type": "execute",
+            "attributes": [
+                {
+                    "key": "Y29udHJhY3RfYWRkcmVzcw==",
+                    "value": "c2VjcmV0MWhzbjMwNDVsNWV6dGQ4eGRlcWx5Njd3ZnZlcjVnaDdjNzI2N3Br",
+                    "index": true
+                }
+            ]
+        },
+        {
+            "type": "wasm",
+            "attributes": [
+                {
+                    "key": "Y29udHJhY3RfYWRkcmVzcw==",
+                    "value": "c2VjcmV0MWhzbjMwNDVsNWV6dGQ4eGRlcWx5Njd3ZnZlcjVnaDdjNzI2N3Br",
                     "index": true
                 }
             ]
         }
     ],
-    "data": [],
-    "gasUsed": 55000,
+    "data": [
+        {}
+    ],
+    "gasUsed": 67487,
     "gasWanted": 1000000,
     "ibcResponses": []
 }

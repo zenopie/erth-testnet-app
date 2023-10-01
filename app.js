@@ -22,8 +22,8 @@ function get_value(file) {
 const API_SECRET = get_value("API_SECRET.txt");
 const WALLET_KEY = get_value("WALLET_KEY.txt");
 const WEBHOOK_PORT = 3000; // Port for HTTPS
-const ID_CONTRACT =  "secret1vlpglxlxj6f6r56rtnhwvmwnqpcvg5jv6yuhx8";
-const ID_HASH =  "5c00cc78668636972ddef77f83c12d228a360fca954910d102af0d3220aeaf93";
+const ID_CONTRACT =  "secret1rgkffv64t3r22lrmgzm95u9tr5m9dlva2v9paz";
+const ID_HASH =  "b5953070ac526c701e345cc08dee52f0b38d978763e5bba0545df32f1a308e6d";
 
 const wallet = new Wallet(WALLET_KEY);
 
