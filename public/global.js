@@ -1,8 +1,8 @@
 const { SecretNetworkClient, MsgExecuteContract } = window.secretjs;
 
 
-const ID_CONTRACT =  "secret1rgkffv64t3r22lrmgzm95u9tr5m9dlva2v9paz";
-const ID_HASH =  "b5953070ac526c701e345cc08dee52f0b38d978763e5bba0545df32f1a308e6d";
+const ID_CONTRACT =  "secret17dxy7lgsr98ys86ly5f7qevv8cmxfuvepl9khx";
+const ID_HASH =  "3fb08f3e351963e7430640db9d5a4de8d5a693849340418e7060eaf490a878e5";
 
 
 window.onload = async () => {
