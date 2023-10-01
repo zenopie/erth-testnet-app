@@ -17,13 +17,13 @@
     </div>
     <ul class="nav-links">
       <li>
-        <a href="#">
+        <a href="index.html">
             <i class='bx bxs-coin'></i>
           <span class="link_name">ANML&nbsp;Token</span>
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="exchange.html">
           <i class='bx bxs-store-alt' ></i>
           <span class="link_name">Exchange</span>
         </a>
@@ -38,6 +38,12 @@
         <a href="#">
           <i class='bx bxs-bank' ></i>
           <span class="link_name">Stake&nbsp;ERTH</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://dash.scrt.network/">
+          <i class='bx bxs-dashboard' ></i>
+          <span class="link_name">SCRT&nbsp;Dashboard</span>
         </a>
       </li>
       <li>
@@ -68,7 +74,7 @@
       </div>
       <div class="disclaimer remove">
         <i class='bx bx-error-alt'></i>
-        <span class="disclaimer-text"><strong>DISCLAIMER:</strong> In order to secure proof of humanity your currently connected address will be associated with your identity.</span>
+        <span class="disclaimer-text"><b>DISCLAIMER:</b> In order to secure proof of humanity your currently connected address will be associated with your identity.</span>
         <div id='veriff-root' style="margin-top: 30px"></div>
       </div>
       <div id="pending-box" class="disclaimer remove">
@@ -77,21 +83,41 @@
       </div>
       <div id="complete-box" class="test-box remove">
         <i class='bx bx-happy-heart-eyes status-icon'></i>
-        <span class="disclaimer-text">Successfully Claimed, See you tomorrow!</span>
+        <span class="disclaimer-text"><b>Successfully claimed, </b>see you tomorrow!</span>
       </div>
-
+      <div class="menu-toggle">
+        <i class='bx bx-menu'></i> <!-- menu toggle on small screens -->
+    </div>
+    
     </div>
   </section>
   <script>
-  let homeSection = document.querySelector(".home-section");
-  let sidebar = document.querySelector(".close");
-  let sidebarBtn = document.querySelector(".bx-menu");
-  sidebar.addEventListener("mouseover", ()=>{
-    sidebar.classList.remove("close");
-  });
-  homeSection.addEventListener("mouseover", ()=>{
-    sidebar.classList.add("close");
-  });
+const menuToggle = document.querySelector('.menu-toggle');
+const sidebar = document.querySelector('.sidebar');
+const homeSection = document.querySelector(".home-section");
+
+if (window.innerWidth > 600) {
+    sidebar.addEventListener("mouseover", () => {
+        sidebar.classList.remove("close");
+    });
+    homeSection.addEventListener("mouseover", () => {
+        sidebar.classList.add("close");
+    });
+}
+
+menuToggle.addEventListener('click', function() {
+    sidebar.classList.toggle('close');
+    // If sidebar is not closed (meaning it's open), hide the menuToggle
+    if (!sidebar.classList.contains('close')) {
+        menuToggle.style.display = 'none';
+    } else {
+        menuToggle.style.display = 'block';
+    }
+});
+
+
+
+
   </script>
   <script src="https://www.unpkg.com/secretjs/dist/browser.js"></script>
   <script src='https://cdn.veriff.me/sdk/js/1.5/veriff.min.js'></script>
