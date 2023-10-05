@@ -152,7 +152,7 @@
 }
 .home-section{
   position: relative;
-  background-color: #42B351;
+  background-color: #C1E8FF;
   height: 100vh;
   left: 260px;
   width: calc(100% - 260px);
@@ -168,54 +168,6 @@ b {
 .remove{
   display: none !important;
 }
-
-.home-content {
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.box {
-  position: absolute;
-  width: 400px;
-  height: 400px;
-  transform: translateY(0px); /* Shift the box up by half its height */
-  background-color: white;
-  padding: 20px;
-  z-index: 2; /* Ensure the box is above the pills */
-  border-bottom-left-radius: 30px;  /* Add border-radius to the bottom left corner */
-  border-bottom-right-radius: 30px; /* Add border-radius to the bottom right corner */
-}
-
-.pill-box {
-  transform: translateY(-150px); /* Shift the box up by half its height */
-  width: 400px;
-  height: 200px;
-  display: flex;
-  z-index: 1; /* Raise the pills above the stake box */
-}
-.pill {
-  width: 50%;
-  background-color: white;
-  color: #293462;
-  padding: 15px 30px;
-  font-size: 18px;
-  border-radius: 40px; /* High border radius to get the pill effect */
-  display: flex;
-  align-items: flex-start; /* Align text to the top */
-  justify-content: center;
-}
-.pill.inactive {
-  background-color: #293462;
-  color: white;
-}
-
 
 
 

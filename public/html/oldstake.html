@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8">
     <title> Earth Network </title>
-    <link rel="stylesheet" href="/css/exchange.css">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/stake.css">
     <!-- Boxiocns CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,14 +22,14 @@
     <!-- Navigation links section begins here -->
     <ul class="nav-links">
       <li>
-        <a href="index.html">
+        <a href="../index.html">
             <i class='bx bxs-coin'></i> <!-- Navigation icon for ANML Token -->
             <span class="link_name">ANML&nbsp;Token</span> <!-- Navigation text -->
         </a>
       </li>
       <!-- Repeat similar structure for other links -->
       <li>
-        <a href="exchange.html">
+        <a href="/html/exchange.html">
           <i class='bx bxs-store-alt'></i>
           <span class="link_name">Exchange</span>
         </a>
@@ -40,7 +41,7 @@
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="/html/stake.html">
           <i class='bx bxs-bank'></i>
           <span class="link_name">Stake&nbsp;ERTH</span>
         </a>
@@ -76,12 +77,42 @@
 
 
 
-        <div id="stake-box" class="box">Stake Box</div>
-        <div id="unstake-box" class="box remove">Unstake Box</div>
-        <div class="pill-box">
-            <div id="stake" class="pill">Stake</div> <!-- ID added here -->
-            <div id="unstake" class="pill inactive">Unstake</div>     <!-- ID added here -->
+      <div id="stake-box" class="box">
+        <div class="max-wrapper"> <!-- New wrapper for the max field and button -->
+          <span class="balance-text">Balance: <span id="balance-value">12345</span></span>
+          <button class="max-button" onclick="setMaxValue()">Max</button>
+      </div>
+        <div class="input-wrapper">
+            <img src="logo.png" alt="Logo" class="logo">
+            <input type="number" id="input-amount" value="0">
         </div>
+        <div class="footer-wrapper"> <!-- Added a wrapper around the disclaimer and button for positioning -->
+            <span class="disclaimer-text">Staking will lock your funds for 21 days.</span>
+            <button class="box-button">Stake</button>
+        </div>
+    </div>
+    
+    
+    <div id="unstake-box" class="box remove">
+      <div class="max-wrapper"> <!-- New wrapper for the max field and button -->
+        <span class="balance-text">Staked: <span id="balance-value">12345</span></span>
+        <button class="max-button" onclick="setMaxValue()">Max</button>
+    </div>
+      <div class="input-wrapper">
+          <img src="logo.png" alt="Logo" class="logo">
+          <input type="number" id="input-amount" value="0">
+      </div>
+      <div class="footer-wrapper"> <!-- Added a wrapper around the disclaimer and button for positioning -->
+          <span class="disclaimer-text"></span>
+          <button class="box-button">Unstake</button>
+      </div>
+    </div>
+    
+    <div class="pill-box">
+        <div id="stake" class="pill">Stake</div>
+        <div id="unstake" class="pill inactive">Unstake</div>
+    </div>
+    
       
     
   

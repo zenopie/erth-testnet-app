@@ -1,9 +1,14 @@
 const { SecretNetworkClient, MsgExecuteContract } = window.secretjs;
 
 
-const ID_CONTRACT =  "secret1ycs8jteuz9zlvm8de3knlynk2346za6e3kr6jt";
-const ID_HASH =  "37a118a24263e3d70fadc787a980c6bf2b5bf5dc9791322b9888a19042738729";
+const ERTH_CONTRACT = "secret12wcgts3trvzccyns4s632neqguqsfzv4p0jgxn";
+const ERTH_HASH = "55bac6db7ea861e9c59c2d4429623a7b445838fed0b8fd5b4d8de10fa4fb6fe7";
+const ANML_CONTRACT =  "secret1hsn3045l5eztd8xdeqly67wfver5gh7c7267pk";
+const ANML_HASH =  "55bac6db7ea861e9c59c2d4429623a7b445838fed0b8fd5b4d8de10fa4fb6fe7";
+const PROTOCOL_CONTRACT =  "secret1ph8elhcug97ucw6z2upwtutr2rm25j6u6nn40d";
+const PROTOCOL_HASH =  "9988ab4e18f4bb15ec7169b4e0f55ab6fbb4e6aaf94955d93f881900faeab5eb";
 
+let erth_viewing_key;
 
 window.onload = async () => {
     connectKeplr();
@@ -115,3 +120,18 @@ async function connectKeplr() {
 }
 
 
+async function try_query_balance(viewing_key, contract, hash){
+	let sscrt_info = await window.secretjs.query.compute.queryContract({
+	  contract_address: contract,
+	  code_hash: hash,
+	  query: {
+		  balance: {
+			  address: window.secretjs.address,
+			  key: viewing_key,
+			  time : Date.now()
+		  }
+	  }
+	});
+	snip_balance = sscrt_info.balance.amount / 1000000;
+	return(snip_balance);
+};

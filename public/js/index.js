@@ -11,8 +11,8 @@ const veriff = Veriff({
 
 async function query(){
 	let tx = await secretjs.query.compute.queryContract({
-	  contract_address: ID_CONTRACT,
-	  code_hash: ID_HASH,
+	  contract_address: PROTOCOL_CONTRACT,
+	  code_hash: PROTOCOL_HASH,
 	  query: {
 		  registration_status: {
 			address: secretjs.address
@@ -88,13 +88,13 @@ function registerButton() {
   });
   veriff.mount();
   document.querySelector(".test-box").classList.add("remove");
-  document.querySelector(".disclaimer").classList.remove("remove");
+  document.querySelector("#disclaimer-box").classList.remove("remove");
 }
 async function mint(){
 	let msg = new MsgExecuteContract({
 		sender: secretjs.address,
-		contract_address: ID_CONTRACT,
-    	code_hash: ID_HASH,
+		contract_address: PROTOCOL_CONTRACT,
+    	code_hash: PROTOCOL_HASH,
 		msg: {
 			mint: {},
 		}

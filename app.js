@@ -22,8 +22,8 @@ function get_value(file) {
 const API_SECRET = get_value("API_SECRET.txt");
 const WALLET_KEY = get_value("WALLET_KEY.txt");
 const WEBHOOK_PORT = 3000; // Port for HTTPS
-const ID_CONTRACT =  "secret1ycs8jteuz9zlvm8de3knlynk2346za6e3kr6jt";
-const ID_HASH =  "37a118a24263e3d70fadc787a980c6bf2b5bf5dc9791322b9888a19042738729";
+const PROTOCOL_CONTRACT =  "secret1ph8elhcug97ucw6z2upwtutr2rm25j6u6nn40d";
+const PROTOCOL_HASH =  "9988ab4e18f4bb15ec7169b4e0f55ab6fbb4e6aaf94955d93f881900faeab5eb";
 
 const wallet = new Wallet(WALLET_KEY);
 
@@ -38,8 +38,8 @@ const secretjs = new SecretNetworkClient({
 async function contract_interaction(message_object){
 	let msg = new MsgExecuteContract({
 		sender: secretjs.address,
-		contract_address: ID_CONTRACT,
-    code_hash: ID_HASH,
+		contract_address: PROTOCOL_CONTRACT,
+    code_hash: PROTOCOL_HASH,
 		msg: message_object,
 	});
 	let resp = await secretjs.tx.broadcast([msg], {

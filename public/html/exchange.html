@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title> Earth Network </title>
-    <link rel="stylesheet" href="/css/exchange.css">
+    <link rel="stylesheet" href="css/exchange.css">
     <!-- Boxiocns CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,7 +35,7 @@
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="stake.html">
           <i class='bx bxs-bank' ></i>
           <span class="link_name">Stake&nbsp;ERTH</span>
         </a>
@@ -63,37 +63,45 @@
   <section class="home-section">
 
     <div class="home-content">
-
-
-
-        <div id="stake-box" class="box">Stake Box</div>
-        <div id="unstake-box" class="box remove">Unstake Box</div>
-        <div class="pill-box">
-            <div id="stake" class="pill">Stake</div> <!-- ID added here -->
-            <div id="unstake" class="pill inactive">Unstake</div>     <!-- ID added here -->
-        </div>
+      <div id="loading remove"></div>
+      <div class="menu-toggle remove">
+        <i class='bx bx-menu'></i> <!-- menu toggle on small screens -->
+    </div>
       
     
-  
-
-
     </div>
   </section>
   <script>
-  let homeSection = document.querySelector(".home-section");
-  let sidebar = document.querySelector(".close");
-  let sidebarBtn = document.querySelector(".bx-menu");
-  sidebar.addEventListener("mouseover", ()=>{
-    sidebar.classList.remove("close");
-  });
-  homeSection.addEventListener("mouseover", ()=>{
-    sidebar.classList.add("close");
-  });
+const menuToggle = document.querySelector('.menu-toggle');
+const sidebar = document.querySelector('.sidebar');
+const homeSection = document.querySelector(".home-section");
+
+if (window.innerWidth > 600) {
+    sidebar.addEventListener("mouseover", () => {
+        sidebar.classList.remove("close");
+    });
+    homeSection.addEventListener("mouseover", () => {
+        sidebar.classList.add("close");
+    });
+}
+
+menuToggle.addEventListener('click', function() {
+    sidebar.classList.toggle('close');
+    // If sidebar is not closed (meaning it's open), hide the menuToggle
+    if (!sidebar.classList.contains('close')) {
+        menuToggle.style.display = 'none';
+    } else {
+        menuToggle.style.display = 'block';
+    }
+});
+
+
+
+
   </script>
   <script src="https://www.unpkg.com/secretjs/dist/browser.js"></script>
   <script src='https://cdn.veriff.me/sdk/js/1.5/veriff.min.js'></script>
   <script src='https://cdn.veriff.me/incontext/js/v1/veriff.js'></script>
   <script src="global.js"></script>
-  <script src="/js/stake.js"></script>
 </body>
 </html>

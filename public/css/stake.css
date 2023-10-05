@@ -1,0 +1,386 @@
+/*---- Home Section Styling ----*/
+.home-section { background: #293462; }
+
+.home-content {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.box {
+  padding: 20px;
+  position: absolute;
+  width: 500px;
+  height: 400px;
+  background-color: white;
+  z-index: 2; /* Ensure the box is above the pills */
+  border-radius: 30px;
+  display: flex;             /* Added */
+  flex-direction: column;   /* Added */
+  align-items: center;    /* Added to align items to the right */
+  z-index: 2;
+}
+
+.pill-box {
+  transform: translateY(-150px); /* Shift the box up by half its height */
+  width: 500px;
+  display: flex;
+}
+
+.pill {
+  width: 50%;
+  height: 190px;
+  background-color: white;
+  color: #293462;
+  padding: 15px 30px;
+  font-size: 18px;
+  border-radius: 40px;
+  display: flex;
+  justify-content: center; /* Align text to the center horizontally */
+}
+
+.pill.inactive {
+  background-color: #ccc;
+  color: white;
+}
+.pill.inactive:hover{
+  color: #293462;
+  background-color: #aaa;
+  transition: all 0.3s ease;
+}
+
+input[type="number"] {
+  font-size: 30px;
+  background-color: #293462;  /* Makes input blend with the background */
+  border: none;               /* Removes the default border */
+  color: white;               /* Text color */
+  outline: none;              /* Optional: Removes the focus outline */
+  padding-left: 10px;         /* Padding to ensure text isn't too close to the logo or edge */
+  padding-right: 10px;
+  box-sizing: border-box;   /* Makes sure the width includes padding and border */
+  text-align: right;        /* Text (numbers) align to the right */
+  width: 100%;   
+  border-radius: 20px;     
+}
+
+/* This is to remove the spinners (up-down arrows) from number input for modern browsers */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+.footer-wrapper {
+  width: 325px;
+  display: flex;        /* Using Flexbox to layout its children (disclaimer and button) */
+  justify-content: space-between;  /* Pushes children to the two ends: left and right */
+  align-items: center; /* Vertically aligns items in case of different heights */
+  margin-top: 10px;    /* Space from the input-wrapper */
+}
+
+.disclaimer-text {
+  color: #F24C4C;
+  margin: 0;           /* Removes any default margins */
+  font-size: 12px;
+  width: 150px;
+}
+
+
+
+
+
+
+.input-wrapper {
+  display: flex;
+  width: 400px;
+  justify-content: space-between;
+  padding: 10px;
+  border: 1px solid #ccc;
+  height: 80px;
+  background-color: #293462;
+  border-radius: 50px;
+}
+
+.logo {
+  height: 100%;   /* Adjusts the logo's height to be 70% of the input-wrapper's height */
+  width: auto;   /* Keeps the aspect ratio intact */
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.box-button {
+  display: block;
+  padding: 8px 13px;
+  width: 125px;
+  background-color: #ccc; 
+  color: #293462;
+  border: 2px solid #293462;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border-radius: 20px;
+}
+
+.box-button:hover {
+  background-color: #0056b3;
+  color: white;
+}
+
+.max-wrapper {
+  font-size: 14px;
+  width: 325px;
+  display: flex;           
+  justify-content: flex-end;  /* Aligns children to the right */
+  align-items: center;        /* Vertically centers the number and the button */
+  margin-bottom: 0px;        /* Space between this wrapper and the input-wrapper */
+}
+
+.balance-text {
+  background-color: white; /* or whatever your background is */
+  color: #293462;              /* White color for the number */
+  padding: 5px 10px;         /* Adjust as needed */
+}
+
+.max-button {
+  font-size: 10px;
+  background-color: #ccc; 
+  color: #293462;
+  border: none;
+  padding: 3px 10px;           /* Adjust for the desired size */
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border-radius: 20px;
+  border: 1px solid #293462;
+}
+
+.max-button:hover {
+  background-color: #0056b3;
+  color: white;
+}
+
+/* This part remains the same */
+.info-wrapper {
+  margin-top: 30px;
+  display: flex;            /* Use Flexbox for layout */
+  justify-content: space-between; /* Distributes the children equally apart */
+  align-items: center;      /* Vertically centers children */
+  width: 100%;              /* Make it the full width of the stake-box */
+  padding: 10px 0;          /* Add some vertical padding for spacing */
+}
+
+.info-wrapper2 {
+  margin-top: 10px;
+  display: flex;            /* Use Flexbox for layout */
+  justify-content: space-between; /* Distributes the children equally apart */
+  align-items: center;      /* Vertically centers children */
+  width: 100%;              /* Make it the full width of the stake-box */
+  padding: 10px 0;          /* Add some vertical padding for spacing */
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;     /* Center the content horizontally */
+  justify-content: center; /* Center the content vertically */
+  width: 50%;              /* Split the space evenly */
+  height: 100%;
+}
+
+
+.info, .info-value, .info-label {
+  margin: 0px 0;           /* Some spacing between the info and the label */
+}
+.info-value {
+  font-size: 20px;
+  font-weight: bolder;
+  color: #293462;
+}
+.info-value2 {
+  font-size: 20px;
+  font-weight: bolder;
+  color: #293462;
+}
+.info-value-date {
+  font-size: 14px;
+  color: #293462;
+}
+.info-label{
+  font-size: 15px;
+  font-weight: bold;
+  color: #293462;
+}
+
+.claim-section {
+  padding-top: 35px;
+  padding-right: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* This ensures they're aligned vertically */
+  width: 100%;
+  max-width: 400px; /* Adjust this value based on your requirement */
+  margin: 0 auto; /* This centers the .claim-section on the page */
+}
+.withdraw-section {
+  padding-top: 10px;
+  padding-right: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* This ensures they're aligned vertically */
+  width: 100%;
+  max-width: 400px; /* Adjust this value based on your requirement */
+  margin: 0 auto; /* This centers the .claim-section on the page */
+}
+.compound-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers the switch and label horizontally */
+}
+
+.compound-label {
+  margin-top: 5px; /* Adjust the space between the switch and the label as needed */
+  color: #293462;
+  font-weight: bold;
+}
+
+
+
+
+
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin-left: 5px;  /* Space between the switch and the button */
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #293462;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  
+  border-radius: 34px;
+}
+
+.slider.round:before {
+ 
+  border-radius: 50%;
+}
+
+/* Your existing claim-button styling */
+.claim-button {
+  width: 250px;
+  font-size: 20px;
+  display: inline-block; /* Modified to inline-block */
+  padding: 11px 30px;
+  background-color: #ccc; 
+  color: #293462;
+  border: 2px solid #293462;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border-radius: 30px;
+  margin-bottom: 5px;
+}
+
+.claim-button:hover {
+  background-color: #0056b3;
+  color: white;
+}
+/* Your existing claim-button styling */
+.claim-button-inactive {
+  width: 250px;
+  font-size: 20px;
+  display: inline-block; /* Modified to inline-block */
+  padding: 11px 30px;
+  background-color: #ccc; 
+  color: white;
+  border: 2px solid #293462;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border-radius: 30px;
+  margin-bottom: 5px;
+}
+
+.info-left, .info-right {
+  position: relative;
+}
+.info-value {
+  position: relative;
+  display: inline-block;
+  /* your other styles here */
+}
+
+.info-value::after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  transform: translateX(-5px);
+
+  width: 20px;  /* adjust these dimensions */
+  height: 20px; /* adjust these dimensions */
+  background: url('../images/sparkle.png') no-repeat center center;
+  background-size: contain; /* this will ensure the image scales properly */
+}
+.details-wrapper.close{
+  position: absolute;
+  width: 500px;
+  height: 50px;
+  top: 180px;
+  left: 0;
+  padding: 10px;
+  background-color: #ccc;
+  z-index: 100;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+
+
+
+
+
+
+  

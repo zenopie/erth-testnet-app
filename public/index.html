@@ -1,128 +1,129 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
+
+<head>
     <meta charset="UTF-8">
-    <title> Earth Network </title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Boxiocns CDN Link -->
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   </head>
+    <title>Earth Network</title>
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
 <body>
-  
-  <div class="sidebar close">
-    <div class="logo-details">
-        <i class='bx bx-world'></i>
-      <span class="logo_name"></span>
+
+    <!-- Sidebar -->
+    <div class="sidebar close">
+        <div class="logo-details">
+            <img src="/images/logo.png" alt="Logo" class="logo-img">
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="index.html">
+                    <i class='bx bxs-coin'></i>
+                    <span class="link_name">ANML&nbsp;Token</span>
+                </a>
+            </li>
+            <li>
+                <a href="/html/exchange.html">
+                    <i class='bx bxs-store-alt'></i>
+                    <span class="link_name">Exchange</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bxs-florist'></i>
+                    <span class="link_name">Provide</span>
+                </a>
+            </li>
+            <li>
+                <a href="/html/stake.html">
+                    <i class='bx bxs-bank'></i>
+                    <span class="link_name">Stake&nbsp;ERTH</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://dash.scrt.network/">
+                    <i class='bx bxs-dashboard'></i>
+                    <span class="link_name">SCRT&nbsp;Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <div class="profile-details">
+                    <div class="profile-content">
+                        <img src="/images/keplr.svg" alt="profileImg">
+                    </div>
+                    <div class="name-job">
+                        <div class="profile_name">Wallet Name</div>
+                        <div class="job">keplr</div>
+                    </div>
+                    <i class='bx bx-log-out'></i>
+                </div>
+            </li>
+        </ul>
     </div>
-    <ul class="nav-links">
-      <li>
-        <a href="index.html">
-            <i class='bx bxs-coin'></i>
-          <span class="link_name">ANML&nbsp;Token</span>
-        </a>
-      </li>
-      <li>
-        <a href="exchange.html">
-          <i class='bx bxs-store-alt' ></i>
-          <span class="link_name">Exchange</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i class='bx bxs-florist' ></i>
-          <span class="link_name">Provide</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i class='bx bxs-bank' ></i>
-          <span class="link_name">Stake&nbsp;ERTH</span>
-        </a>
-      </li>
-      <li>
-        <a href="https://dash.scrt.network/">
-          <i class='bx bxs-dashboard' ></i>
-          <span class="link_name">SCRT&nbsp;Dashboard</span>
-        </a>
-      </li>
-      <li>
-    <div class="profile-details">
-      <div class="profile-content">
-        <img src="keplr.svg" alt="profileImg">
-      </div>
-      <div class="name-job">
-        <div class="profile_name">Wallet Name</div>
-        <div class="job">keplr</div>
-      </div>
-      <i class='bx bx-log-out' ></i>
-    </div>
-  </li>
-</ul>
-  </div>
-  <section class="home-section">
 
-    <div class="home-content">
-      <div id="loading"></div>
-      <div id="register-box" class="test-box remove">
-        <i class='bx bxs-id-card status-icon'></i>
-        <button onclick="registerButton()" class="claim-button">Register</button>
-      </div>
-      <div id="claim-box" class="test-box remove">
-        <i class='bx bx-wink-smile status-icon'></i>
-        <button onclick="claimButton()" class="claim-button">Claim</button>
-      </div>
-      <div class="disclaimer remove">
-        <i class='bx bx-error-alt'></i>
-        <span class="disclaimer-text"><b>DISCLAIMER:</b> In order to secure proof of humanity your currently connected address will be associated with your identity.</span>
-        <div id='veriff-root' style="margin-top: 30px"></div>
-      </div>
-      <div id="pending-box" class="disclaimer remove">
-        <i class='bx bx-hourglass status-icon'></i>
-        <span class="disclaimer-text">Your verification is now pending. Please allow up to 24 hours to verify. This page will be updated when complete</span>
-      </div>
-      <div id="complete-box" class="test-box remove">
-        <i class='bx bx-happy-heart-eyes status-icon'></i>
-        <span class="disclaimer-text"><b>Successfully claimed, </b>see you tomorrow!</span>
-      </div>
-      <div class="menu-toggle">
-        <i class='bx bx-menu'></i> <!-- menu toggle on small screens -->
-    </div>
-    
-    </div>
-  </section>
-  <script>
-const menuToggle = document.querySelector('.menu-toggle');
-const sidebar = document.querySelector('.sidebar');
-const homeSection = document.querySelector(".home-section");
+    <!-- Home Section -->
+    <section class="home-section">
+        <div class="home-content">
+            <div id="loading"></div>
+            <div class="menu-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+            <div id="register-box" class="test-box remove">
+                <i class='bx bx-id-card status-icon'></i>
+                <button onclick="registerButton()" class="claim-button">Register</button>
+            </div>
+            <div id="claim-box" class="test-box remove">
+                <img src="/images/anml.png" alt="Logo" class="logo-img">
+                <button onclick="claimButton()" class="claim-button">Claim</button>
+            </div>
+            <div id="disclaimer-box" class="test-box remove">
+                <i class='bx bx-error-alt'></i>
+                <span class="disclaimer-text"><b>DISCLAIMER:</b> In order to secure proof of humanity your currently connected wallet address will be associated with your identity.</span>
+                <div id='veriff-root' style="margin-top: 30px"></div>
+            </div>
+            <div id="pending-box" class="disclaimer remove">
+                <i class='bx bx-hourglass status-icon'></i>
+                <span class="disclaimer-text">Your verification is now pending. Please allow up to 24 hours to verify. This page will be updated when complete</span>
+            </div>
+            <div id="complete-box" class="test-box remove">
+                <i class='bx bx-cookie status-icon'></i>
+                <span class="success-text"><b>CLAIMED! </b>see you tomorrow!</span>
+            </div>
+        </div>
+    </section>
 
-if (window.innerWidth > 600) {
-    sidebar.addEventListener("mouseover", () => {
-        sidebar.classList.remove("close");
-    });
-    homeSection.addEventListener("mouseover", () => {
-        sidebar.classList.add("close");
-    });
-}
+    <!-- Scripts -->
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const sidebar = document.querySelector('.sidebar');
+        const homeSection = document.querySelector(".home-section");
 
-menuToggle.addEventListener('click', function() {
-    sidebar.classList.toggle('close');
-    // If sidebar is not closed (meaning it's open), hide the menuToggle
-    if (!sidebar.classList.contains('close')) {
-        menuToggle.style.display = 'none';
-    } else {
-        menuToggle.style.display = 'block';
-    }
-});
+        if (window.innerWidth > 600) {
+            sidebar.addEventListener("mouseover", () => {
+                sidebar.classList.remove("close");
+            });
+            homeSection.addEventListener("mouseover", () => {
+                sidebar.classList.add("close");
+            });
+        }
 
-
-
-
-  </script>
-  <script src="https://www.unpkg.com/secretjs/dist/browser.js"></script>
-  <script src='https://cdn.veriff.me/sdk/js/1.5/veriff.min.js'></script>
-  <script src='https://cdn.veriff.me/incontext/js/v1/veriff.js'></script>
-  <script src="global.js"></script>
-  <script src="index.js"></script>
+        menuToggle.addEventListener('click', function() {
+            sidebar.classList.toggle('close');
+            // If sidebar is not closed (meaning it's open), hide the menuToggle
+            if (!sidebar.classList.contains('close')) {
+                menuToggle.style.display = 'none';
+            } else {
+                menuToggle.style.display = 'block';
+            }
+        });
+    </script>
+    <script src="https://www.unpkg.com/secretjs/dist/browser.js"></script>
+    <script src='https://cdn.veriff.me/sdk/js/1.5/veriff.min.js'></script>
+    <script src='https://cdn.veriff.me/incontext/js/v1/veriff.js'></script>
+    <script src="/js/global.js"></script>
+    <script src="/js/index.js"></script>
 </body>
+
 </html>
