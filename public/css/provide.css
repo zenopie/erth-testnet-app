@@ -1,0 +1,309 @@
+/*---- Home Section Styling ----*/
+.home-section { background: #41CE8F; }
+
+.home-content {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.closed-box {
+  padding: 20px;
+  width: 500px;
+  height: 100px;
+  background-color: white;
+  z-index: 2; /* Ensure the box is above the pills */
+  border-radius: 30px;
+  position: relative;
+  display: flex;             /* Added */
+  align-items: center;    /* Added to align items to the right */
+}
+.closed-box-alt {
+  padding: 20px;
+  width: 500px;
+  height: 100px;
+  background-color: white;
+  z-index: 2; /* Ensure the box is above the pills */
+  position: relative;
+  display: flex;             /* Added */
+  align-items: center;    /* Added to align items to the right */
+  border-top-right-radius: 30px;
+  border-top-left-radius: 30px;
+}
+.coin-anml {
+  width: 60px;
+  height: auto;
+  position: absolute;
+  left: -75px;  /* Adjust this value based on the width of the logo or how far you want it outside the box */
+
+}
+.plus{
+  color: #293462;
+  font-size: 50px;
+  position: absolute;
+  left: -18px;  /* Adjust this value based on the width of the logo or how far you want it outside the box */
+}
+.coin-other {
+  width: 60px;
+  height: auto;
+}
+.ticker {
+ color: #293462;
+}
+.anml-label{
+  color: #293462;
+  position: absolute;
+  left: -120px;  /* Adjust this value based on the width of the logo or how far you want it outside the box */
+}
+.open-box {
+  padding-bottom: 20px;
+  width: 500px;
+  background-color: white;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+.pill-box {
+  width: 500px;
+  display: flex;
+  z-index: -1;
+  transform: translateY(70px);
+}
+.pill {
+  width: 33.33%;
+  height: 120px;
+  background-color: white;
+  color: #293462;
+  padding: 15px 30px;
+  font-size: 18px;
+  border-radius: 40px;
+  display: flex;
+  justify-content: center; /* Align text to the center horizontally */
+}
+
+.pill.inactive {
+  background-color: #41CE8F;
+  color: white;
+}
+.pill.inactive:hover{
+  color: #293462;
+  background-color: #bbb;
+  transition: all 0.3s ease;
+}
+
+.input-wrapper {
+  transform: translateX(20px);
+  display: flex;
+  width: 400px;
+  justify-content: space-between;
+  padding: 10px;
+  border: 1px solid #ccc;
+  height: 80px;
+  background-color:#41CE8F;
+  border-radius: 50px;
+}
+
+.logo {
+  height: 100%;   /* Adjusts the logo's height to be 70% of the input-wrapper's height */
+  width: auto;   /* Keeps the aspect ratio intact */
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.max-wrapper {
+  transform: translateX(20px);
+  font-size: 14px;
+  width: 350px;
+  display: flex;           
+  justify-content: space-between;  /* Aligns children to the right */
+  align-items: center;        /* Vertically centers the number and the button */
+  margin-bottom: 0px;        /* Space between this wrapper and the input-wrapper */
+}
+
+.balance-text {
+  background-color: white; /* or whatever your background is */
+  color: #293462;              /* White color for the number */
+  padding: 5px 10px;         /* Adjust as needed */
+}
+.box-button {
+  display: block;
+  padding: 8px 13px;
+  width: 125px;
+  background-color: #ccc; 
+  color: #293462;
+  border: 2px solid #293462;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border-radius: 20px;
+}
+
+.box-button:hover {
+  background-color: #0056b3;
+  color: white;
+}
+
+
+
+.balance-text {
+  background-color: white; /* or whatever your background is */
+  color: #293462;              /* White color for the number */
+  padding: 5px 10px;         /* Adjust as needed */
+}
+
+.max-button {
+  font-size: 10px;
+  background-color: #ddd; 
+  color: #293462;
+  border: none;
+  padding: 3px 10px;           /* Adjust for the desired size */
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border-radius: 20px;
+  border: 1px solid #293462;
+}
+
+.max-button:hover {
+  background-color: #0056b3;
+  color: white;
+}
+
+input[type="number"] {
+  font-size: 30px;
+  background-color: #41CE8F;  /* Makes input blend with the background */
+  border: none;               /* Removes the default border */
+  color: white;               /* Text color */
+  outline: none;              /* Optional: Removes the focus outline */
+  padding-left: 10px;         /* Padding to ensure text isn't too close to the logo or edge */
+  padding-right: 10px;
+  box-sizing: border-box;   /* Makes sure the width includes padding and border */
+  text-align: right;        /* Text (numbers) align to the right */
+  width: 100%;   
+  border-radius: 20px;     
+}
+
+/* This is to remove the spinners (up-down arrows) from number input for modern browsers */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.swap-button {
+  margin-top: 20px;
+  width: 250px;
+  font-size: 20px;
+  display: inline-block; /* Modified to inline-block */
+  padding: 11px 30px;
+  background-color: #ddd; 
+  color: #293462;
+  border: 2px solid #293462;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border-radius: 30px;
+}
+.swap-button:hover {
+  background-color: #0056b3;
+  color: white;
+}
+.fifty {
+  display: flex;
+  align-items: center;
+  transform: translateX(-130px);
+  color: #293462;
+}
+
+.footer-wrapper {
+  gap: 20px;
+  width: 400px;
+  display: flex;        /* Using Flexbox to layout its children (disclaimer and button) */
+  align-items: center; /* Vertically aligns items in case of different heights */
+  margin-top: 10px;    /* Space from the input-wrapper */
+  justify-content: space-between;
+}
+
+.disclaimer-text {
+  padding-left: 30px;
+  color: #F24C4C;
+  margin: 0;           /* Removes any default margins */
+  font-size: 12px;
+  width: 210px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;     /* Center the content horizontally */
+  justify-content: center; /* Center the content vertically */
+         /* Split the space evenly */
+  height: 100%;
+}
+.info-value {
+  font-size: 20px;
+  font-weight: bolder;
+  color: #293462;
+}
+.info-label{
+  font-size: 15px;
+  font-weight: bold;
+  color: #293462;
+}
+
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 300px;
+  height: 10px;
+  border-radius: 5px;   /* Makes the slider a little more rounded */
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity .2s;
+  margin: 20px 0; /* Adds some spacing above and below the slider */
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;   /* Makes the slider handle a circle */
+  background: #4CAF50;
+  cursor: pointer;
+  transition: background .2s; /* Adds a transition effect when you hover over the slider handle */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;   /* Makes the slider handle a circle */
+  background: #4CAF50;
+  cursor: pointer;
+  transition: background .2s; /* Adds a transition effect when you hover over the slider handle */
+}
+
+/* Change the slider handle's color on hover */
+.slider::-webkit-slider-thumb:hover,
+.slider::-moz-range-thumb:hover {
+  background: #3a3; /* Darker green color */
+}
+
+.general-wrapper {
+  width: 100%;
+  display: flex;    
+  align-items: center; /* Vertically aligns items in case of different heights */
+  margin-top: 10px;    /* Space from the input-wrapper */
+  justify-content: space-around; /* Distributes space around items */
+}

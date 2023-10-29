@@ -21,6 +21,7 @@
   background-color: white;
   z-index: 2; /* Ensure the box is above the pills */
   border-radius: 30px;
+
   display: flex;             /* Added */
   flex-direction: column;   /* Added */
   align-items: center;    /* Added to align items to the right */
@@ -46,12 +47,12 @@
 }
 
 .pill.inactive {
-  background-color: #ccc;
+  background-color: #293462;
   color: white;
 }
 .pill.inactive:hover{
   color: #293462;
-  background-color: #aaa;
+  background-color: #bbb;
   transition: all 0.3s ease;
 }
 
@@ -102,7 +103,7 @@ input[type="number"]::-webkit-outer-spin-button {
   width: 400px;
   justify-content: space-between;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
   height: 80px;
   background-color: #293462;
   border-radius: 50px;
@@ -119,7 +120,7 @@ input[type="number"]::-webkit-outer-spin-button {
   display: block;
   padding: 8px 13px;
   width: 125px;
-  background-color: #ccc; 
+  background-color: #ddd; 
   color: #293462;
   border: 2px solid #293462;
   cursor: pointer;
@@ -149,7 +150,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .max-button {
   font-size: 10px;
-  background-color: #ccc; 
+  background-color: #ddd; 
   color: #293462;
   border: none;
   padding: 3px 10px;           /* Adjust for the desired size */
@@ -273,7 +274,7 @@ input[type="number"]::-webkit-outer-spin-button {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: #ddd;
   transition: .4s;
   border-radius: 34px;
 }
@@ -316,7 +317,7 @@ input:checked + .slider:before {
   font-size: 20px;
   display: inline-block; /* Modified to inline-block */
   padding: 11px 30px;
-  background-color: #ccc; 
+  background-color: #ddd; 
   color: #293462;
   border: 2px solid #293462;
   cursor: pointer;
@@ -335,7 +336,7 @@ input:checked + .slider:before {
   font-size: 20px;
   display: inline-block; /* Modified to inline-block */
   padding: 11px 30px;
-  background-color: #ccc; 
+  background-color: #ddd; 
   color: white;
   border: 2px solid #293462;
   cursor: pointer;
@@ -371,10 +372,17 @@ input:checked + .slider:before {
   top: 180px;
   left: 0;
   padding: 10px;
-  background-color: #ccc;
+  background-color: #ddd;
   z-index: 100;
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
+  font-size: 20px;
+  color: white;
+  transition: all 0.3s ease;
+}
+.details-wrapper.close:hover {
+  color: #293462;
+  background-color: #bbb;
 }
 
 

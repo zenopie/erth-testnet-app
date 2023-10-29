@@ -157,15 +157,15 @@
 
 /* --- HOME SECTION STYLING --- */
 
-/* Default style for home section */
 .home-section{
   position: relative; 
-                  /* Background color for the section */
-  height: 100vh;                /* Take up the full viewport height */
+  height: auto;                   /* Let it adjust based on content */
+  min-height: 100vh;     
   left: 260px;                  /* Start to the right to make room for sidebar */
   width: calc(100% - 260px);    /* Deduct sidebar width from total width */
-  transition: all 0.5s ease;    /* Transition effect for any property change */
+  transition: left 0.5s ease, width 0.5s ease;  /* Specify which properties should have the transition */
 }
+
 
 /* Adjusts home section when sidebar is closed */
 .sidebar.close ~ .home-section{
@@ -206,7 +206,7 @@
   z-index: 101;   /* Above everything else */
   cursor: pointer;
   font-size: 24px;
-  background-color: #F9EC9B;  /* Or any desired color */
+  background-color: white;  /* Or any desired color */
   padding: 10px;
   border-radius: 5px;
 }
@@ -260,5 +260,5 @@ red {
   height: 100%;
   z-index: 9999999;
   background-size: 500px;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(255, 255, 255, 0.5);
 }

@@ -31,7 +31,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/html/provide.html">
                     <i class='bx bxs-florist'></i>
                     <span class="link_name">Provide</span>
                 </a>
@@ -54,7 +54,7 @@
                         <img src="/images/keplr.svg" alt="profileImg">
                     </div>
                     <div class="name-job">
-                        <div class="profile_name">Wallet Name</div>
+                        <div id="wallet-name" class="profile_name">Wallet Name</div>
                         <div class="job">keplr</div>
                     </div>
                     <i class='bx bx-log-out'></i>
@@ -64,7 +64,7 @@
     </div>
 <!-- Home Section -->
 <section class="home-section">
-    <div id="loading" class="remove"></div>
+    <div id="loading"></div>
     <!-- Menu Toggle -->
     <div class="menu-toggle">
         <i class='bx bx-menu'></i>
@@ -81,8 +81,9 @@
         <!-- Stake Box -->
         <div id="stake-box" class="box">
             <div class="max-wrapper">
-                <span class="balance-text">Balance: <span id="balance-value"></span></span>
-                <button class="max-button" onclick="setMaxValue()">Max</button>
+                <span class="balance-text">Balance: <span id="balance-value"></span>
+                <button id="max-stake" class="max-button" onclick="setMaxValue()">Max</button>
+                <button id="vk-button-stake" class="max-button remove" onclick="get_vk()">Get Viewing Key</button></span>
             </div>
             <div class="input-wrapper">
                 <img src="/images/logo.png" alt="Logo" class="logo">
@@ -94,12 +95,12 @@
             </div>
             <div class="info-wrapper">
                 <div class="info-item">
-                    <span id="apy-value" class="info-value"></span>
-                    <span class="info-label">APY</span>
-                </div>
-                <div class="info-item">
                     <span id="staked-amount" class="info-value2">0</span>
                     <span class="info-label">Staked</span>
+                </div>
+                <div class="info-item">
+                    <span id="apy-value" class="info-value">0</span>
+                    <span class="info-label">APY</span>
                 </div>
                 <div class="info-item">
                     <span id="accumulated-reward" class="info-value2">0</span>
@@ -147,7 +148,7 @@
                 
             </div>
             <div class="withdraw-section">
-                <button class="claim-button-inactive" onclick="claim_staking_rewards()">Withdraw</button>
+                <button class="claim-button-inactive" onclick="withdraw_unbondings()">Withdraw</button>
                 <div class="info-item">
                     <span id="available-unstaking" class="info-value2">0</span>
                     <span class="info-label">Available</span>
@@ -156,7 +157,8 @@
             
         </div>
         <div class="details-wrapper close remove">
-            <span class="info-value2">details</span>
+            <span class="details-text">Details</span>
+            <i class='bx bx-chevron-down' ></i>
         </div>
 
         
@@ -190,8 +192,6 @@
         });
     </script>
     <script src="https://www.unpkg.com/secretjs/dist/browser.js"></script>
-    <script src='https://cdn.veriff.me/sdk/js/1.5/veriff.min.js'></script>
-    <script src='https://cdn.veriff.me/incontext/js/v1/veriff.js'></script>
     <script src="/js/global.js"></script>
     <script src="/js/stake.js"></script>
 </body>

@@ -5,8 +5,8 @@ const ERTH_CONTRACT = "secret12wcgts3trvzccyns4s632neqguqsfzv4p0jgxn";
 const ERTH_HASH = "55bac6db7ea861e9c59c2d4429623a7b445838fed0b8fd5b4d8de10fa4fb6fe7";
 const ANML_CONTRACT =  "secret1hsn3045l5eztd8xdeqly67wfver5gh7c7267pk";
 const ANML_HASH =  "55bac6db7ea861e9c59c2d4429623a7b445838fed0b8fd5b4d8de10fa4fb6fe7";
-const PROTOCOL_CONTRACT =  "secret1ph8elhcug97ucw6z2upwtutr2rm25j6u6nn40d";
-const PROTOCOL_HASH =  "9988ab4e18f4bb15ec7169b4e0f55ab6fbb4e6aaf94955d93f881900faeab5eb";
+const PROTOCOL_CONTRACT =  "secret10zgfr9l43hlfmx98yxr85yus70y04vsal7zahx";
+const PROTOCOL_HASH =  "815cabceaec2156fdf55681444578765644e2bdb78e0ee9a271eabf4fb135695";
 
 let erth_viewing_key;
 
@@ -110,6 +110,9 @@ async function connectKeplr() {
 
     if (this.address) {
         try {
+            let wallet_name = await window.keplr.getKey(this.chainId);
+            console.log(wallet_name);
+            document.querySelector("#wallet-name").innerHTML = wallet_name.name.slice(0,12);
             start();
         } catch (error) {
             console.log(error);
@@ -121,7 +124,7 @@ async function connectKeplr() {
 
 
 async function try_query_balance(viewing_key, contract, hash){
-	let sscrt_info = await window.secretjs.query.compute.queryContract({
+	let tx = await window.secretjs.query.compute.queryContract({
 	  contract_address: contract,
 	  code_hash: hash,
 	  query: {
@@ -132,6 +135,78 @@ async function try_query_balance(viewing_key, contract, hash){
 		  }
 	  }
 	});
-	snip_balance = sscrt_info.balance.amount / 1000000;
+    console.log(tx);
+	snip_balance = tx.balance.amount / 1000000;
 	return(snip_balance);
 };
+
+function floorToDecimals(num, dec) {
+    const multiplier = 10 ** dec;
+    return Math.floor(num * multiplier) / multiplier;
+}
+
+async function snip(snipmsg, amount){
+	let hookmsg64 = btoa(JSON.stringify(snipmsg));
+	let msg = new MsgExecuteContract({
+		sender: secretjs.address,
+		contract_address: ERTH_CONTRACT,
+    	code_hash: ERTH_HASH,
+		msg: {
+			send: {
+				recipient: PROTOCOL_CONTRACT,
+        		code_hash: PROTOCOL_HASH,
+				amount: amount.toString(),
+				msg: hookmsg64,
+			}
+		}
+	});
+	let resp = await secretjs.tx.broadcast([msg], {
+		gasLimit: 1_000_000,
+		gasPriceInFeeDenom: 0.1,
+		feeDenom: "uscrt",
+	});
+	console.log(resp);
+};
+
+async function query(querymsg){
+	let tx = await secretjs.query.compute.queryContract({
+	  contract_address: PROTOCOL_CONTRACT,
+	  code_hash: PROTOCOL_HASH,
+	  query: querymsg,
+	});
+	console.log(tx);
+    return tx;
+};
+
+
+
+async function contract(contractmsg){
+	let msg = new MsgExecuteContract({
+		sender: secretjs.address,
+		contract_address: PROTOCOL_CONTRACT,
+    	code_hash: PROTOCOL_HASH,
+		msg: contractmsg
+	});
+	let resp = await secretjs.tx.broadcast([msg], {
+		gasLimit: 1_000_000,
+		gasPriceInFeeDenom: 0.1,
+		feeDenom: "uscrt",
+	});
+	console.log(resp);
+};
+
+function formatDateFromUTCNanoseconds(nanoseconds) {
+    const milliseconds = nanoseconds / 1000000;
+    const date = new Date(milliseconds);
+    const options = {
+        year: 'numeric',
+        month: 'numeric',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        timeZone: 'UTC',
+        timeZoneName: 'short'
+    };
+    return date.toLocaleString('en-US', options);
+}

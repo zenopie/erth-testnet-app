@@ -106,8 +106,12 @@ async function mint(){
 	});
 	console.log(resp);
 };
-function claimButton(){
-  mint();
+async function claimButton(){
+  document.querySelector("#loading").classList.remove("remove");
+  await mint();
+  document.querySelector("#loading").classList.add("remove");
+  document.querySelector("#claim-box").classList.add("remove");
+  document.querySelector("#complete-box").classList.remove("remove");
 } 
 
 function start(){
