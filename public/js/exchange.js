@@ -49,6 +49,8 @@ async function swap_simulation_top(){
     let amount = Math.floor(input * 1000000);
     let tx = await swap_query(top_coin.contract, bottom_coin.contract, amount);
     document.querySelector("#bottom-input-amount").value = tx.amount / 1000000;
+    document.querySelector("#price-impact").innerHTML = tx.scaled_price_impact / 100 + "%";
+    document.querySelector("#swap-fee").innerHTML = tx.fee / 1000000;
 }
 
 async function swap_simulation_bottom(){
@@ -56,6 +58,8 @@ async function swap_simulation_bottom(){
     let amount = Math.floor(input * 1000000);
     let tx = await reverse_swap_query(top_coin.contract, bottom_coin.contract, amount);
     document.querySelector("#top-input-amount").value = tx.amount / 1000000;
+    document.querySelector("#price-impact").innerHTML = tx.scaled_price_impact / 100 + "%";
+    document.querySelector("#swap-fee").innerHTML = tx.fee / 1000000;
 }
 
 async function swap_query(input, output, amount){

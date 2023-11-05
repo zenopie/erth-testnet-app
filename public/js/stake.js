@@ -93,7 +93,6 @@ function setMaxValueStaked(){
 }
 
 async function stake() {
-    document.querySelector("#loading").classList.remove("remove");
     let compound = await isCompoundEnabled(); 
     amount = Math.floor(document.getElementById("input-amount").value * 1000000);
     let snipmsg = {
@@ -102,7 +101,6 @@ async function stake() {
         },
     }
     await snip(snipmsg, amount);
-    document.querySelector("#loading").classList.add("remove");
     location.reload(true);
 }
 
@@ -113,14 +111,11 @@ async function unstake_request() {
             amount: amount.toString(),
         },
     }
-    document.querySelector("#loading").classList.remove("remove");
     await contract(contractmsg);
-    document.querySelector("#loading").classList.add("remove");
     location.reload(true);
 }
 
 async function claim_staking_rewards() {
-    document.querySelector("#loading").classList.remove("remove");
     let compound = await isCompoundEnabled(); 
     let contractmsg = {
         claim_staking_rewards: {
@@ -133,7 +128,6 @@ async function claim_staking_rewards() {
     } catch (error) {
         console.log(error);
     }
-    document.querySelector("#loading").classList.add("remove");
 }
 
 function isCompoundEnabled() {

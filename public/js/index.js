@@ -90,28 +90,23 @@ function registerButton() {
   document.querySelector(".test-box").classList.add("remove");
   document.querySelector("#disclaimer-box").classList.remove("remove");
 }
-async function mint(){
-	let msg = new MsgExecuteContract({
-		sender: secretjs.address,
-		contract_address: PROTOCOL_CONTRACT,
-    	code_hash: PROTOCOL_HASH,
-		msg: {
-			mint: {},
-		}
-	});
-	let resp = await secretjs.tx.broadcast([msg], {
-		gasLimit: 1_000_000,
-		gasPriceInFeeDenom: 0.1,
-		feeDenom: "uscrt",
-	});
-	console.log(resp);
-};
 async function claimButton(){
   document.querySelector("#loading").classList.remove("remove");
-  await mint();
-  document.querySelector("#loading").classList.add("remove");
-  document.querySelector("#claim-box").classList.add("remove");
-  document.querySelector("#complete-box").classList.remove("remove");
+  let contractmsg = {
+    mint: {}
+  };
+  let tx = await contract(contractmsg);
+  // Find the status in the logs
+  const logEntry = tx.arrayLog.find(
+    (log) => log.type === "message" && log.key === "result"
+  );
+  if (!logEntry || !logEntry.value) {
+      throw new Error("Contract address not found in the logs.");
+  } else {
+    document.querySelector("#loading").classList.add("remove");
+    document.querySelector("#claim-box").classList.add("remove");
+    document.querySelector("#complete-box").classList.remove("remove");
+  }
 } 
 
 function start(){

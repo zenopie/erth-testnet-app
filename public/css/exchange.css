@@ -193,7 +193,16 @@ input[type="number"]::-webkit-outer-spin-button {
   opacity: 1;
 }
 
-
+.swap-info{
+  margin-top: 25px;
+  padding: 10px;
+  background-color: #C0E7FE;
+  width: 80%;
+  border-radius: 30px;
+  color: #293462;
+  display: flex;
+  flex-direction: column;
+}
 
 
 

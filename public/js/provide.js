@@ -208,8 +208,8 @@ async function claim_provide_rewards(){
 	let contractmsg = {
 		claim_provide_rewards: {pool_id: ERTH_CONTRACT},
 	}
-    contract(contractmsg);
-    start();
+    await contract(contractmsg);
+    location.reload(true);
 };
 
 async function request_withdraw(){
@@ -221,7 +221,7 @@ async function request_withdraw(){
         },
 	}
     contract(contractmsg);
-    start();
+    location.reload(true);
 };
 
 async function complete_withdraw(){
@@ -231,7 +231,7 @@ async function complete_withdraw(){
         },
 	}
     contract(contractmsg);
-    start();
+    location.reload(true);
 };
 
 async function get_vk_top() {

@@ -5,8 +5,8 @@ const ERTH_CONTRACT = "secret12wcgts3trvzccyns4s632neqguqsfzv4p0jgxn";
 const ERTH_HASH = "55bac6db7ea861e9c59c2d4429623a7b445838fed0b8fd5b4d8de10fa4fb6fe7";
 const ANML_CONTRACT =  "secret1hsn3045l5eztd8xdeqly67wfver5gh7c7267pk";
 const ANML_HASH =  "55bac6db7ea861e9c59c2d4429623a7b445838fed0b8fd5b4d8de10fa4fb6fe7";
-const PROTOCOL_CONTRACT =  "secret10zgfr9l43hlfmx98yxr85yus70y04vsal7zahx";
-const PROTOCOL_HASH =  "815cabceaec2156fdf55681444578765644e2bdb78e0ee9a271eabf4fb135695";
+const PROTOCOL_CONTRACT =  "secret1fh2038x3p0tdz85vdvkl4lk7pkggl0zxndt03v";
+const PROTOCOL_HASH =  "06a809264fcb5867effd2f8337c073376dd2349b9f1d969b57f66d8dcac8bffb";
 
 let erth_viewing_key;
 
@@ -193,6 +193,7 @@ async function contract(contractmsg){
 		feeDenom: "uscrt",
 	});
 	console.log(resp);
+    return resp;
 };
 
 function formatDateFromUTCNanoseconds(nanoseconds) {
