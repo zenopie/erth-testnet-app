@@ -91,21 +91,21 @@ function registerButton() {
   document.querySelector("#disclaimer-box").classList.remove("remove");
 }
 async function claimButton(){
-  document.querySelector("#loading").classList.remove("remove");
   let contractmsg = {
     mint: {}
   };
   let tx = await contract(contractmsg);
+
   // Find the status in the logs
-  const logEntry = tx.arrayLog.find(
-    (log) => log.type === "message" && log.key === "result"
-  );
-  if (!logEntry || !logEntry.value) {
-      throw new Error("Contract address not found in the logs.");
-  } else {
+  if (tx.arrayLog) {
+    const logEntry = tx.arrayLog.find(
+      (log) => log.type === "message" && log.key === "result"
+    );
     document.querySelector("#loading").classList.add("remove");
     document.querySelector("#claim-box").classList.add("remove");
     document.querySelector("#complete-box").classList.remove("remove");
+  } else {
+    console.log("test");
   }
 } 
 

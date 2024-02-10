@@ -92,7 +92,7 @@ async function connectKeplr() {
                 this.address = accounts[0].address;
 
                 window.secretjs = new SecretNetworkClient({
-                  url: "https://api.pulsar.scrttestnet.com/",
+                  url: "https://lcd.testnet.secretsaturn.net",
                   chainId: this.chainId,
                   wallet: keplrOfflineSigner,
                   walletAddress: this.address,
