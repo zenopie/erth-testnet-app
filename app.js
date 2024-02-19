@@ -11,7 +11,6 @@ function get_value(file) {
   const filePath = path.join(__dirname, file);
   try {
     const data = fs.readFileSync(filePath, 'utf8');
-    console.log(data);
     return data;
   } catch (err) {
     console.error(err);
@@ -85,7 +84,6 @@ function isSignatureValid(data) {
 }
 app.get("/api/pending/:address", (req, res) => {
   const address = req.params.address;
-  console.log(address);
   const pending = pending_verifications.includes(address);
   res.json({ pending: pending });
 });
