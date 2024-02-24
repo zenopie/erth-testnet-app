@@ -92,7 +92,7 @@ function registerButton() {
 }
 async function claimButton(){
   let contractmsg = {
-    mint: {}
+    claim: {}
   };
   let tx = await contract(contractmsg);
 
