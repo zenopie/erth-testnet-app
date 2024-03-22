@@ -1,5 +1,5 @@
 /*---- Home Section Styling ----*/
-.home-section { background: #F9EC9B; }
+.home-section { background: #F1F0EA; }
 
 /*---- Test Box Styling ----*/
 .test-box {
@@ -16,7 +16,7 @@
 .status-icon {
     font-size: 200px;
     padding: 20px;
-    color: #293462;
+    color: #4056a1;
 }
 
 /*---- Claim Button Styling ----*/
@@ -24,7 +24,7 @@
     margin: auto;
     margin-top: 20px;
     background-color: white;
-    border: 5px solid #293462;
+    border: 5px solid #4056a1;
     font-size: 25px;
     border-radius: 30px;
     color: #293462;
@@ -53,8 +53,8 @@
     transform: translate(-50%, -50%);
 }
 
-.disclaimer-text { font-size: 25px; color: #F24C4C; }
-.success-text { font-size: 25px; font-weight: bold; color: #293462; }
-.bx-error-alt { font-size: 50px; padding: 20px; color: #F24C4C; }
+.disclaimer-text { font-size: 25px; color: #F13c20; }
+.success-text { font-size: 25px; font-weight: bold; color: #4056a1; }
+.bx-error-alt { font-size: 50px; padding: 20px; color: #F13c20; }
 
 
