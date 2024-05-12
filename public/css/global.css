@@ -10,6 +10,9 @@
   font-weight: 500;
 }
 
+/*---- Home Section Styling ----*/
+.home-section { background: #F1F0EA; }
+
 /* Main sidebar styles */
 .sidebar{
   position: fixed;
@@ -262,3 +265,58 @@ red {
   background-size: 500px;
   background-color: rgba(255, 255, 255, 0.5);
 }
+
+.tooltip-container {
+  display: flex;
+  align-items: center; /* Center-align items vertically */
+  position: relative; /* Add position relative for the tooltip positioning */
+}
+
+.tooltip-container .tooltip-content {
+  visibility: hidden;
+  width: 220px;
+  background-color: #4056a1;
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: calc(100% + 10px); /* Position below the info icon */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  padding: 10px;
+}
+
+.tooltip-trigger:hover + .tooltip-content {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Initial state of the arrow */
+.arrow {
+  transition: transform 0.3s; /* Add transition for smooth rotation */
+}
+
+/* Rotated state of the arrow when submenu is open */
+.open .arrow {
+  transform: rotate(90deg); /* Rotate the arrow 90 degrees */
+}
+
+
+
+.submenu-list li {
+  padding: 10px;
+}
+
+.submenu-list li a {
+  color: black;
+  text-decoration: none;
+}
+
+.submenu-list li a:hover {
+  color: blue;
+}
+

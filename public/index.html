@@ -36,6 +36,17 @@
                     <span class="link_name">Dashboard</span>
                 </a>
             </li>
+            <li class="submenu">
+                <a href="#">
+                    <i class='bx bxs-pie-chart-alt-2'></i>
+                    <span class="link_name">Governance</span>
+                    <i class='bx bx-chevron-right arrow'></i>
+                </a>
+                <ul class="submenu-list remove">
+                    <li><a href="/html/publicgoods.html">Public Goods Fund</a></li>
+                    <li><a href="/html/deflationfund.html">Deflation Fund</a></li>
+                </ul>
+            </li>
             <li>
                 <div class="profile-details">
                     <div class="profile-content">
@@ -59,7 +70,7 @@
                 <i class='bx bx-menu'></i>
             </div>
             <div id="register-box" class="test-box remove">
-                <img src="/images/passport.svg" width=350 alt="Logo" style="filter: drop-shadow(15px 15px 15px #888);" class="logo-img">
+                <img src="/images/passport.svg" width=350 alt="Logo" style="filter: drop-shadow(25px 25px 25px #aaa);" class="logo-img">
                 <button onclick="registerButton()" class="claim-button">Register</button>
             </div>
             <div id="claim-box" class="test-box remove">
@@ -82,31 +93,6 @@
         </div>
     </section>
 
-    <!-- Scripts -->
-    <script>
-        const menuToggle = document.querySelector('.menu-toggle');
-        const sidebar = document.querySelector('.sidebar');
-        const homeSection = document.querySelector(".home-section");
-
-        if (window.innerWidth > 600) {
-            sidebar.addEventListener("mouseover", () => {
-                sidebar.classList.remove("close");
-            });
-            homeSection.addEventListener("mouseover", () => {
-                sidebar.classList.add("close");
-            });
-        }
-
-        menuToggle.addEventListener('click', function() {
-            sidebar.classList.toggle('close');
-            // If sidebar is not closed (meaning it's open), hide the menuToggle
-            if (!sidebar.classList.contains('close')) {
-                menuToggle.style.display = 'none';
-            } else {
-                menuToggle.style.display = 'block';
-            }
-        });
-    </script>
     <script src="https://www.unpkg.com/secretjs/dist/browser.js"></script>
     <script src='https://cdn.veriff.me/sdk/js/1.5/veriff.min.js'></script>
     <script src='https://cdn.veriff.me/incontext/js/v1/veriff.js'></script>
