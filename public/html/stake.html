@@ -31,7 +31,7 @@
             </a>
         </li>
         <li>
-            <a href="https://dash.scrt.network/">
+            <a href="stake.html">
                 <i class='bx bxs-lock-alt'></i>
                 <span class="link_name">Stake&nbsp;ERTH</span>
             </a>
@@ -43,7 +43,6 @@
                 <i class='bx bx-chevron-right arrow'></i>
             </a>
             <ul class="submenu-list remove">
-                <li><a href="publicgoods.html">Public Goods Fund</a></li>
                 <li><a href="deflationfund.html">Deflation Fund</a></li>
             </ul>
         </li>
@@ -68,31 +67,19 @@
         <div class="menu-toggle">
             <i class='bx bx-menu'></i>
         </div>
-        <div class="chart-box">
-            <div class="tooltip-container">
-                <h1>Public Goods Fund</h1>
-                <div class="info-icon">
-                    <i class='bx bxs-info-circle tooltip-trigger'></i>
-                    <span class="tooltip-content">The Public Goods Fund is allocated on the 
-                        basis of a 1 person 1 vote ratio.
-                    </span>
-                </div>
-            </div>            
-            <h3>My Preferred Allocation</h3>
-            <div class="canvas-container">
-                <canvas id="myChart"></canvas>
-            </div>
-            <button onclick="registerButton()" class="claim-button">Change</button>
-        </div>
-
-    
-        <div class="chart-box">
-            <h3>Current Actual Allocation</h3>
-            <div class="canvas-container">
-                <canvas id="currentChart"></canvas>
-            </div>
-        </div>
         
+        <div class="input-container">
+            <label for="stake">Stake:</label>
+            <input type="number" id="stake" value="0">
+            <button onclick="stake()">Submit</button>
+        </div>
+    
+        <div class="input-container">
+            <label for="unstake">Unstake:</label>
+            <input type="number" id="unstake" value="0">
+            <button onclick="unstake()">Submit</button>
+        </div>
+        <div id="allocation-info"></div>
     </section>
 
   
@@ -101,7 +88,7 @@
     <script src="https://www.unpkg.com/secretjs/dist/browser.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="/js/global.js"></script>
-    <script src="/js/governance.js"></script>
+    <script src="/js/stake.js"></script>
 </body>
 
 </html>

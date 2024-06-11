@@ -36,5 +36,10 @@
     transition: all 0.3s ease;
 }
 
+.total-indicator {
+    border: 1px solid red; /* Example style for indicating a non-100 total */
+}
+
+
 
 

@@ -7,6 +7,9 @@ const ANML_CONTRACT =  "secret1hsn3045l5eztd8xdeqly67wfver5gh7c7267pk";
 const ANML_HASH =  "55bac6db7ea861e9c59c2d4429623a7b445838fed0b8fd5b4d8de10fa4fb6fe7";
 const PROTOCOL_CONTRACT =  "secret1vl3auz6w3lxaq56uf06d442edm6xxv2qvhwcdq";
 const PROTOCOL_HASH =  "f798c2abe39a705e21bfdfa4aef32dc9509dd4fc36f6a92c0525e1b3fcb9e838";
+const GOV_CONTRACT =  "secret1syp84xh2wsuuj6dqfygxd9l2ufyeqmg39hxhlv";
+const GOV_HASH =  "cab1f3fb9b661b41f3f7f38b1d6997f7b59106d35261315c1ff66aef4d94986b";
+
 
 let erth_viewing_key;
 
@@ -92,7 +95,7 @@ async function connectKeplr() {
                 this.address = accounts[0].address;
 
                 window.secretjs = new SecretNetworkClient({
-                  url: "https://lcd.testnet.secretsaturn.net",
+                  url: "https://api.pulsar.scrttestnet.com",
                   chainId: this.chainId,
                   wallet: keplrOfflineSigner,
                   walletAddress: this.address,
@@ -145,16 +148,16 @@ function floorToDecimals(num, dec) {
     return Math.floor(num * multiplier) / multiplier;
 }
 
-async function snip(snipmsg, amount){
+async function snip(contract, hash, recipient, recipient_hash, snipmsg, amount){
 	let hookmsg64 = btoa(JSON.stringify(snipmsg));
 	let msg = new MsgExecuteContract({
 		sender: secretjs.address,
-		contract_address: ERTH_CONTRACT,
-    	code_hash: ERTH_HASH,
+		contract_address: contract,
+    	code_hash: hash,
 		msg: {
 			send: {
-				recipient: PROTOCOL_CONTRACT,
-        		code_hash: PROTOCOL_HASH,
+				recipient: recipient,
+        		code_hash: recipient_hash,
 				amount: amount.toString(),
 				msg: hookmsg64,
 			}
@@ -168,10 +171,10 @@ async function snip(snipmsg, amount){
 	console.log(resp);
 };
 
-async function query(querymsg){
+async function query(contract, hash, querymsg){
 	let tx = await secretjs.query.compute.queryContract({
-	  contract_address: PROTOCOL_CONTRACT,
-	  code_hash: PROTOCOL_HASH,
+	  contract_address: contract,
+	  code_hash: hash,
 	  query: querymsg,
 	});
 	console.log(tx);
@@ -180,11 +183,11 @@ async function query(querymsg){
 
 
 
-async function contract(contractmsg){
+async function contract(contract, hash, contractmsg){
 	let msg = new MsgExecuteContract({
 		sender: secretjs.address,
-		contract_address: PROTOCOL_CONTRACT,
-    	code_hash: PROTOCOL_HASH,
+		contract_address: contract,
+    	code_hash: hash,
 		msg: contractmsg
 	});
 	let resp = await secretjs.tx.broadcast([msg], {

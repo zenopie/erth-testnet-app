@@ -31,7 +31,7 @@
             </a>
         </li>
         <li>
-            <a href="https://dash.scrt.network/">
+            <a href="stake.html">
                 <i class='bx bxs-lock-alt'></i>
                 <span class="link_name">Stake&nbsp;ERTH</span>
             </a>
@@ -43,7 +43,6 @@
                 <i class='bx bx-chevron-right arrow'></i>
             </a>
             <ul class="submenu-list remove">
-                <li><a href="publicgoods.html">Public Goods Fund</a></li>
                 <li><a href="deflationfund.html">Deflation Fund</a></li>
             </ul>
         </li>
@@ -82,7 +81,15 @@
             <div class="canvas-container">
                 <canvas id="myChart"></canvas>
             </div>
-            <button onclick="registerButton()" class="claim-button">Change</button>
+            <h3>Percentages</h3>
+            <div id="input-container">
+                 <!-- Input elements for allocations will be dynamically added here -->
+            </div>
+            <div id="total-container">
+                <label for="total">Total Percent(must be 100):</label>
+                <input type="number" id="total" disabled class="total-indicator">
+            </div>
+            <button onclick="changeAllocation()" class="claim-button">Change</button>
         </div>
 
     

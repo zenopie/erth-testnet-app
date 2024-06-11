@@ -9,25 +9,18 @@ const veriff = Veriff({
   }
 });
 
-async function query(){
-	let tx = await secretjs.query.compute.queryContract({
-	  contract_address: PROTOCOL_CONTRACT,
-	  code_hash: PROTOCOL_HASH,
-	  query: {
-		  registration_status: {
-			address: secretjs.address
-		},
-	  }
-	});
-  console.log(tx);
-  return tx;
-};
+
 
 
 
 async function check_verification_status(){
+  let querymsg = {
+    registration_status: {
+      address: secretjs.address
+    }
+  };
   let anml_status = "not_verified";
-  let contract_value =  await query();
+  let contract_value =  await query(PROTOCOL_CONTRACT, PROTOCOL_HASH, querymsg);
   if (contract_value.registration_status == "registered") {
     const now = Date.now();
     const oneDayInMillis = 24 * 60 * 60 * 1000; // 86,400,000 milliseconds in a day
