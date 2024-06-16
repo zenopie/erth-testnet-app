@@ -62,26 +62,18 @@
         <div class="menu-toggle">
             <i class='bx bx-menu'></i>
         </div>
+        <div class="chart-box">
+            <div class="tooltip-container">
+                <h1>Public Goods Fund</h1>
+                <div class="info-icon">
+                    <i class='bx bxs-info-circle tooltip-trigger'></i>
+                    <span class="tooltip-content">The public goods fund is allocated on the basis of a 1 person 1 vote ratio
+                    </span>
+                </div>
+            </div>            
+            
+        </div>
         
-        <div class="input-container">
-            <label for="stake">Stake:</label>
-            <input type="number" id="stake" value="0">
-            <button onclick="stake()">Submit</button>
-        </div>
-    
-        <div class="input-container">
-            <label for="unstake">Unstake:</label>
-            <input type="number" id="unstake" value="0">
-            <button onclick="unstake()">Submit</button>
-        </div>
-        <div id="allocation-info"></div>
-        <button onclick="faucet()">Testnet ERTH Faucet</button>
-        <button onclick="viewingKey()">Testnet ERTH Viewing Key</button>
-        <div class="input-container">
-            <label for="unstake">Add Allocation Option(address):</label>
-            <input type="text" id="allocation">
-            <button onclick="addAllocationOption()">Submit</button>
-        </div>
     </section>
 
   
@@ -90,7 +82,6 @@
     <script src="https://www.unpkg.com/secretjs/dist/browser.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="/js/global.js"></script>
-    <script src="/js/stake.js"></script>
 </body>
 
 </html>

@@ -15,6 +15,23 @@ async function unstake() {
     start();
 }
 
+async function addAllocationOption() {
+    let input = document.getElementById('allocation');
+    console.log(input.value);
+    let msg = {add_allocation_option: {address: input.value}};
+    await contract(GOV_CONTRACT, GOV_HASH, msg);
+    input.value = "";
+}
+
+async function faucet() {
+    let msg = {faucet: {}};
+    await contract(GOV_CONTRACT, GOV_HASH, msg);
+}
+
+async function viewingKey() {
+    await window.keplr.suggestToken(chainId, ERTH_CONTRACT);
+}
+
 async function check_deposit(){
     let querymsg = {get_stake: {address: window.secretjs.address}}
     let allocation_info =  await query(GOV_CONTRACT, GOV_HASH, querymsg);

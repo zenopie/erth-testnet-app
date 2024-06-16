@@ -7,8 +7,8 @@ const ANML_CONTRACT =  "secret1hsn3045l5eztd8xdeqly67wfver5gh7c7267pk";
 const ANML_HASH =  "55bac6db7ea861e9c59c2d4429623a7b445838fed0b8fd5b4d8de10fa4fb6fe7";
 const PROTOCOL_CONTRACT =  "secret1vl3auz6w3lxaq56uf06d442edm6xxv2qvhwcdq";
 const PROTOCOL_HASH =  "f798c2abe39a705e21bfdfa4aef32dc9509dd4fc36f6a92c0525e1b3fcb9e838";
-const GOV_CONTRACT =  "secret1syp84xh2wsuuj6dqfygxd9l2ufyeqmg39hxhlv";
-const GOV_HASH =  "cab1f3fb9b661b41f3f7f38b1d6997f7b59106d35261315c1ff66aef4d94986b";
+const GOV_CONTRACT =  "secret1k3apatdqj46z6p5sh840k6tlkvnlmc2ug7dyf7";
+const GOV_HASH =  "a0c6f06962720a447d8759274db48873bf17852b7fcc468af0b8b12ed66e1611";
 
 
 let erth_viewing_key;
