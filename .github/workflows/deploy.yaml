@@ -23,7 +23,7 @@ jobs:
         username: ${{ secrets.REMOTE_SERVER_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
-          cd erth
+          cd erth-testnet-app
           git pull origin main
           npm install
           pm2 restart app.js

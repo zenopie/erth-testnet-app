@@ -1,5 +1,5 @@
 let labels = [];
-
+let stake_amount = 0;
 // Get the container element
 const container = document.getElementById('input-container');
 
@@ -18,6 +18,10 @@ async function checkAllocations() {
     let allocationInfo = await query(GOV_CONTRACT, GOV_HASH, allocationQuery);
     let allocationOptionsQuery = { get_allocation_options: {} };
     let allocationOptions = await query(GOV_CONTRACT, GOV_HASH, allocationOptionsQuery);
+    let querymsg = {get_stake: {address: window.secretjs.address}}
+    let allocation_info =  await query(GOV_CONTRACT, GOV_HASH, querymsg);
+    // Display the allocation information
+    stake_amount = allocation_info.amount;
 
     // Data for the first chart (My Preferred Allocation)
   
@@ -182,6 +186,11 @@ function getValues() {
 
 
 async function changeAllocation() {
+    checkAccountExists(secretjs.address);
+    if (stake_amount == 0){
+        alert('no ERTH deposit');
+        return;
+    }
     const percentages = getValues(); // Get the user input
 
     if (percentages === null) {

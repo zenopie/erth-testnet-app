@@ -1,4 +1,5 @@
 async function stake() {
+    checkAccountExists(secretjs.address);
     let input = document.getElementById('stake');
     let snipmsg = {deposit: {}};
     await snip(ERTH_CONTRACT, ERTH_HASH, GOV_CONTRACT, GOV_HASH, snipmsg, input.value);
@@ -7,6 +8,7 @@ async function stake() {
 }
 
 async function unstake() {
+    checkAccountExists(secretjs.address);
     let input = document.getElementById('unstake');
     console.log(input.value);
     let msg = {withdraw: {amount: input.value}};
@@ -16,6 +18,7 @@ async function unstake() {
 }
 
 async function addAllocationOption() {
+    checkAccountExists(secretjs.address);
     let input = document.getElementById('allocation');
     console.log(input.value);
     let msg = {add_allocation_option: {address: input.value}};
@@ -24,6 +27,7 @@ async function addAllocationOption() {
 }
 
 async function faucet() {
+    checkAccountExists(secretjs.address);
     let msg = {faucet: {}};
     await contract(GOV_CONTRACT, GOV_HASH, msg);
 }

@@ -252,3 +252,29 @@ document.addEventListener("DOMContentLoaded", function() {
         governanceItem.parentElement.classList.toggle('open'); 
     });
 });
+
+
+/**
+ * Function to check if a given account exists based on the account address.
+ * @param {string} accountAddress - The account address to check.
+ * @returns {Promise<object>} - Resolves with the account data if found, otherwise rejects with an error message.
+ */
+async function checkAccountExists(accountAddress) {
+    const baseUrl = 'https://api.pulsar.scrttestnet.com/cosmos/auth/v1beta1/accounts/';
+    const accountUrl = `${baseUrl}${accountAddress}`;
+  
+    try {
+      const response = await fetch(accountUrl);
+      if (!response.ok) {
+        if (response.status === 404) {
+          throw new Error('Account not found. Account was never seeded with testnet SCRT.');
+        } else {
+          throw new Error(`An error occurred: ${response.statusText}`);
+        }
+      }
+      const data = await response.json(); // or response.text(), depending on your API response format
+      return data;
+    } catch (error) {
+      alert(error.message);
+    }
+  }
