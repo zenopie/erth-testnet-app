@@ -26,4 +26,4 @@ jobs:
           cd erth-testnet-app
           git pull origin main
           npm install
-          pm2 restart app.js
+          pm2 restart testnet-app.js
