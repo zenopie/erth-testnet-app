@@ -1,9 +1,9 @@
-name: Deploy to Remote Server
+name: Deploy Testnet App to Remote Server
 
 on:
   push:
     branches:
-      - main
+      - main  # Adjust if you use a different branch
 
 jobs:
   deploy:
@@ -13,17 +13,56 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
 
-    - name: Install Dependencies
-      run: npm install
-
-    - name: Deploy to Remote Server
+    - name: Deploy and Build Testnet App on Remote Server
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.REMOTE_SERVER_HOST }}
         username: ${{ secrets.REMOTE_SERVER_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
-          cd erth-testnet-app
-          git pull origin main
-          npm install
-          pm2 restart testnet-app.js
+          # Define the directories
+          HOME_DIR=/home/ubuntu/testnet-earth-network-app
+          WWW_DIR=/var/www/testnet-earth-network-app
+
+          # Create the home directory if it doesn't exist
+          if [ ! -d "$HOME_DIR" ]; then
+            mkdir -p $HOME_DIR
+          fi
+
+          # Navigate to the home directory where the source code is stored
+          cd $HOME_DIR
+
+          # Clone or pull the latest code
+          if [ ! -d ".git" ]; then
+            git clone https://github.com/yourusername/erth-testnet-app.git .
+          else
+            git pull origin main
+          fi
+
+          # Install dependencies
+          if [ -f package.json ]; then
+            npm install
+          else
+            echo "Error: package.json not found!"
+            exit 1
+          fi
+
+          # Build the project
+          npm run build
+
+          # Ensure the web directory exists
+          if [ ! -d "$WWW_DIR" ]; then
+            sudo mkdir -p $WWW_DIR
+          fi
+
+          # Remove old files in the web directory
+          sudo rm -rf $WWW_DIR/*
+
+          # Move the build output to the web directory
+          sudo cp -r build/* $WWW_DIR/
+
+          # Set the correct permissions
+          sudo chown -R www-data:www-data $WWW_DIR
+
+          # Restart Nginx to apply the changes
+          sudo systemctl restart nginx
