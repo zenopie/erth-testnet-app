@@ -34,7 +34,7 @@ jobs:
 
           # Clone or pull the latest code
           if [ ! -d ".git" ]; then
-            git clone https://github.com/yourusername/erth-testnet-app.git .
+            git clone https://github.com/zenopie/erth-testnet-app.git .
           else
             git pull origin main
           fi
